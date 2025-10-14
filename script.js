@@ -144,17 +144,17 @@ const palabrasFijas = {
 
     // ===== Nuevas palabras/expresiones (según tu carpeta) =====
     // Tiempo / frecuencia
-    "ayer": "Ayer",
-    "hoy": "Hoy",
-    "mañana": "Mañana", "manana": "mañana",
+    "Ayer": "Ayer",
+    "Hoy": "Hoy",
+    "Mañana": "Mañana", "Manana": "Mañana",
     "año": "Año", "Ano": "año",
-    "año pasado": "año pasado", "Ano pasado": "año pasado",
-    "futuro": "Futuro",
+    "año pasado": "Año pasado", "Ano pasado": "año pasado",
+    "Futuro": "Futuro",
     "pasado": "Pasado",
     "último": "Ultimo", "Último": "ultimo",
-    "minuto": "minuto",
-    "hora": "hora",
-    "mes": "mes",
+    "minuto": "Minuto",
+    "hora": "Hora",
+    "mes": "Mes",
     "semana": "Semana",
     "domingo": "Domingo",
     "lunes": "Lunes",
@@ -374,6 +374,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
