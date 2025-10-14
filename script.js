@@ -1,4 +1,4 @@
-// ✅ Traductor de Voz y Texto a Lengua de Señas - Versión Final
+// ✅ Traductor de Voz y Texto a Lengua de Señas - Versión Final CORREGIDA
 
 const video = document.getElementById("videoSeña");
 const videoSource = document.getElementById("videoSource");
@@ -13,10 +13,8 @@ const videoPath = "palabras/";
 const videos = {
   // Frases comunes
   "hola": "hola.mp4",
-  "como estas": "comoestas.mp4",
-  "como estás": "comoestas.mp4",
-  "cómo estás": "comoestas.mp4",
-  "me llamo luana": "llamoluana.mp4"
+  "comoestas": "comoestas.mp4",
+  "me llamo luana": "llamoluana.mp4",
 
   // Provincias
   "entrerios": "Entrerios.mp4",
@@ -28,13 +26,13 @@ const videos = {
   "santacruz": "Santacruz.mp4",
   "santafe": "Santafe.mp4",
   "santiagodelestero": "Santiagodelestero.mp4",
-  "antartidaargentina": "Antártidaargentina.mp4",
+  "antartidaargentina": "Antartidaargentina.mp4",
   "tierradelfuego": "Tierradelfuego.mp4",
 
   // Familia
   "hijo": "Hijohija.mp4",
   "hija": "Hijohija.mp4",
-  "bebe": "Bebé.mp4",
+  "bebe": "Bebe.mp4",
   "abuelo": "Abueloabuela.mp4",
   "abuela": "Abueloabuela.mp4",
   "hermano": "Hermanohermana.mp4",
@@ -106,7 +104,7 @@ const videos = {
   "gente": "Gente.mp4",
   "personalidad": "Personalidad.mp4",
 
-  // Verbos conjugados (todos apuntan al infinitivo principal)
+  // Verbos conjugados
   "amar": "Amar.mp4", "amo": "Amar.mp4", "amas": "Amar.mp4", "amamos": "Amar.mp4", "aman": "Amar.mp4",
   "querer": "Querer.mp4", "quiero": "Querer.mp4", "quieres": "Querer.mp4", "quiere": "Querer.mp4", "queremos": "Querer.mp4", "quieren": "Querer.mp4",
   "sentir": "Sentir.mp4", "siento": "Sentir.mp4", "sientes": "Sentir.mp4", "siente": "Sentir.mp4", "sentimos": "Sentir.mp4", "sienten": "Sentir.mp4",
@@ -117,7 +115,7 @@ const videos = {
 
   // Emociones
   "sentimiento": "Sentimiento.mp4",
-  "emocion": "Emoción.mp4",
+  "emocion": "Emocion.mp4",
   "emocionado": "Emocionado.mp4",
   "emocionarse": "Emocionarse.mp4",
   "confiar": "Confiar.mp4",
@@ -127,41 +125,44 @@ const videos = {
   "deseo": "Deseo.mp4",
   "desear": "Desear.mp4",
   "admirar": "Admirar.mp4",
-  "admiracion": "Admiración.mp4",
+  "admiracion": "Admiracion.mp4",
   "ofender": "Ofender.mp4",
   "ofensa": "Ofensa.mp4",
   "ofendido": "Ofendido.mp4",
   "odio": "Odiar.mp4"
 };
 
-// ✅ Generar automáticamente el abecedario
+// ✅ Generar automáticamente las letras (Letraa.mp4, Letrab.mp4, etc.)
 for (let i = 97; i <= 122; i++) {
   const letra = String.fromCharCode(i);
   videos[letra] = `Letra${letra}.mp4`;
 }
 
-// 🎬 Reproducir el video correspondiente
+// 🎬 Reproducir video correspondiente
 function reproducirVideo(palabra) {
-  palabra = palabra.toLowerCase().replace(/\s+/g, '');
+  palabra = palabra.toLowerCase().trim();
+
+  // Normalizar eliminando acentos
+  palabra = palabra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // Si tiene espacios, intentar buscar sin espacios
+  const palabraSinEspacios = palabra.replace(/\s+/g, '');
+  let archivo = videos[palabra] || videos[palabraSinEspacios];
+
   texto.textContent = palabra;
 
-  let archivo = videos[palabra];
   if (!archivo) {
-    // Si no hay palabra, reproducir letra por letra
-    const letras = palabra.split('');
-    reproducirLetras(letras);
+    reproducirLetras(palabraSinEspacios.split(''));
     return;
   }
 
-  const nombreArchivo = archivo.charAt(0).toUpperCase() + archivo.slice(1);
-  const ruta = `${videoPath}${nombreArchivo}`;
-
+  const ruta = `${videoPath}${archivo}`;
   videoSource.src = ruta;
   video.load();
   video.play().catch(e => console.error("❌ Error al reproducir:", e));
 }
 
-// 🅰️ Si no hay palabra, mostrar cada letra
+// 🅰️ Mostrar letras si no hay palabra
 async function reproducirLetras(letras) {
   for (const letra of letras) {
     const archivo = `Letra${letra}.mp4`;
