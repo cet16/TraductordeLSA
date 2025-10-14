@@ -15,6 +15,7 @@ if (!videoSeña || !videoSource) console.error('Faltan elementos videoSeña/vide
 // --- Config inicial ---
 videoSeña.style.display = "none";
 videoSeña.muted = true;
+videoSeña.autoplay = true;
 
 // --- Reconocimiento de voz ---
 const Recon = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -25,7 +26,7 @@ if (reconocimiento) reconocimiento.lang = 'es-ES';
 function normalizar(text) {
   if (!text) return '';
   let t = String(text).toLowerCase().trim();
-  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // elimina acentos
   t = t.replace(/[¿?¡!,.]/g, '');
   t = t.replace(/\s+/g, ' ');
   return t;
@@ -175,9 +176,9 @@ function procesarTextoSecuencial(text) {
     videoSource.src = `palabras/${videoFile}`;
     videoSeña.load();
     videoSeña.style.display = "block";
-    videoSeña.play().catch(err => {
-      console.warn("No se pudo reproducir automáticamente:", err);
-    });
+    videoSeña.oncanplay = () => {
+      videoSeña.play().catch(err => console.warn("⚠️ No se pudo reproducir automáticamente:", err));
+    };
   } else {
     texto.textContent = "❌ Palabra no encontrada";
     videoSeña.style.display = "none";
@@ -209,4 +210,3 @@ entradaTexto.addEventListener('keypress', (event) => {
     procesarTextoSecuencial(userInput);
   }
 });
-
