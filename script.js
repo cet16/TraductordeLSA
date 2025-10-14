@@ -1,212 +1,194 @@
-// ==========================================================
-// ==============  Traductor Voz/Text → Señas  ==============
-// ==========================================================
+// ✅ Traductor de Voz y Texto a Lengua de Señas - Versión Final
 
-// --- Captura de elementos del HTML ---
-const boton = document.getElementById('start');
-const texto = document.getElementById('texto');
-const videoSeña = document.getElementById('videoSeña');
-const videoSource = document.getElementById('videoSource');
-const entradaTexto = document.getElementById('entradaTexto');
-const startText = document.getElementById('startText'); 
+const video = document.getElementById("videoSeña");
+const videoSource = document.getElementById("videoSource");
+const inputTexto = document.getElementById("entradaTexto");
+const texto = document.getElementById("texto");
+const speedControl = document.getElementById("speedControl");
+const speedValue = document.getElementById("speedValue");
 
-if (!videoSeña || !videoSource) console.error('Faltan elementos videoSeña/videoSource en el HTML.');
+const videoPath = "palabras/";
 
-// --- Config inicial ---
-videoSeña.style.display = "none";
-videoSeña.muted = true;
-videoSeña.autoplay = true;
+// ✅ Diccionario: palabra o sinónimo → archivo de video
+const videos = {
+  // Frases comunes
+  "hola": "hola.mp4",
+  "como estas": "comoestas.mp4",
+  "como estás": "comoestas.mp4",
+  "cómo estás": "comoestas.mp4",
+  "me llamo luana": "llamoluana.mp4"
 
-// --- Reconocimiento de voz ---
-const Recon = window.SpeechRecognition || window.webkitSpeechRecognition;
-const reconocimiento = Recon ? new Recon() : null;
-if (reconocimiento) reconocimiento.lang = 'es-ES';
+  // Provincias
+  "entrerios": "Entrerios.mp4",
+  "lapampa": "Lapampa.mp4",
+  "larioja": "Larioja.mp4",
+  "rionegro": "Rionegro.mp4",
+  "sanjuan": "Sanjan.mp4",
+  "sanluis": "Sanluis.mp4",
+  "santacruz": "Santacruz.mp4",
+  "santafe": "Santafe.mp4",
+  "santiagodelestero": "Santiagodelestero.mp4",
+  "antartidaargentina": "Antártidaargentina.mp4",
+  "tierradelfuego": "Tierradelfuego.mp4",
 
-// --- Funciones utilitarias ---
-function normalizar(text) {
-  if (!text) return '';
-  let t = String(text).toLowerCase().trim();
-  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // elimina acentos
-  t = t.replace(/[¿?¡!,.]/g, '');
-  t = t.replace(/\s+/g, ' ');
-  return t;
+  // Familia
+  "hijo": "Hijohija.mp4",
+  "hija": "Hijohija.mp4",
+  "bebe": "Bebé.mp4",
+  "abuelo": "Abueloabuela.mp4",
+  "abuela": "Abueloabuela.mp4",
+  "hermano": "Hermanohermana.mp4",
+  "hermana": "Hermanohermana.mp4",
+  "tio": "Tiotia.mp4",
+  "tia": "Tiotia.mp4",
+  "padrastro": "Padrastro.mp4",
+  "madrastra": "Madrastra.mp4",
+  "esposo": "Esposoesposa.mp4",
+  "esposa": "Esposoesposa.mp4",
+  "pareja": "Pareja.mp4",
+  "soltero": "Solterosoltera.mp4",
+  "soltera": "Solterosoltera.mp4",
+  "separado": "Separadoseparada.mp4",
+  "separada": "Separadoseparada.mp4",
+
+  // Edad y cumpleaños
+  "edad": "Edad.mp4",
+  "cumpleaños": "Cumpleaños.mp4",
+
+  // Nacionalidad / religión
+  "extranjero": "Extranjeroextranjera.mp4",
+  "extranjera": "Extranjeroextranjera.mp4",
+  "catolico": "Catolicocatolica.mp4",
+  "catolica": "Catolicocatolica.mp4",
+  "jesucristo": "Jesucristo.mp4",
+  "jesus": "Jesus.mp4",
+  "iglesia": "Iglesia.mp4",
+
+  // Trabajo / economía
+  "administrar": "Administrar.mp4",
+  "negociar": "Negociar.mp4",
+  "estafa": "Estafa.mp4",
+  "estafar": "Estafar.mp4",
+  "ahorro": "Ahorro.mp4",
+  "ahorrar": "Ahorrar.mp4",
+  "deber": "Deber.mp4",
+  "barato": "Barato.mp4",
+  "caro": "Caro.mp4",
+  "jefe": "Jefejefa.mp4",
+  "jefa": "Jefejefa.mp4",
+  "empleado": "Empleadoempleada.mp4",
+  "empleada": "Empleadoempleada.mp4",
+  "jubilado": "Jubiladojubilada.mp4",
+  "jubilada": "Jubiladojubilada.mp4",
+  "sueldo": "Sueldo.mp4",
+  "echar": "Echar.mp4",
+  "despedir": "Despedir.mp4",
+  "renunciar": "Renunciar.mp4",
+  "feriado": "Feriado.mp4",
+  "fiesta": "Fiesta.mp4",
+  "bombero": "Bomberobombera.mp4",
+  "bombera": "Bomberobombera.mp4",
+  "nacional": "Nacional.mp4",
+  "nacionalmente": "Nacionalmente.mp4",
+  "internacional": "Internacional.mp4",
+  "internacionalmente": "Internacionalmente.mp4",
+  "poder": "Poder.mp4",
+  "compu": "Compu.mp4",
+  "computadora": "Computadora.mp4",
+  "economia": "Economia.mp4",
+
+  // Acciones y emociones
+  "jugar": "Jugar.mp4",
+  "dibujar": "Dibujar.mp4",
+  "ruido": "Ruido.mp4",
+  "persona": "Persona.mp4",
+  "personas": "Personas.mp4",
+  "gente": "Gente.mp4",
+  "personalidad": "Personalidad.mp4",
+
+  // Verbos conjugados (todos apuntan al infinitivo principal)
+  "amar": "Amar.mp4", "amo": "Amar.mp4", "amas": "Amar.mp4", "amamos": "Amar.mp4", "aman": "Amar.mp4",
+  "querer": "Querer.mp4", "quiero": "Querer.mp4", "quieres": "Querer.mp4", "quiere": "Querer.mp4", "queremos": "Querer.mp4", "quieren": "Querer.mp4",
+  "sentir": "Sentir.mp4", "siento": "Sentir.mp4", "sientes": "Sentir.mp4", "siente": "Sentir.mp4", "sentimos": "Sentir.mp4", "sienten": "Sentir.mp4",
+  "odiar": "Odiar.mp4", "odio": "Odiar.mp4", "odias": "Odiar.mp4", "odia": "Odiar.mp4", "odiamos": "Odiar.mp4", "odian": "Odiar.mp4",
+  "ahorrar": "Ahorrar.mp4", "ahorro": "Ahorrar.mp4", "ahorras": "Ahorrar.mp4", "ahorra": "Ahorrar.mp4", "ahorramos": "Ahorrar.mp4", "ahorran": "Ahorrar.mp4",
+  "cantar": "Cantar.mp4", "canto": "Cantar.mp4", "cantas": "Cantar.mp4", "canta": "Cantar.mp4", "cantamos": "Cantar.mp4", "cantan": "Cantar.mp4",
+  "bailar": "Bailar.mp4", "bailo": "Bailar.mp4", "bailas": "Bailar.mp4", "baila": "Bailar.mp4", "bailamos": "Bailar.mp4", "bailan": "Bailar.mp4",
+
+  // Emociones
+  "sentimiento": "Sentimiento.mp4",
+  "emocion": "Emoción.mp4",
+  "emocionado": "Emocionado.mp4",
+  "emocionarse": "Emocionarse.mp4",
+  "confiar": "Confiar.mp4",
+  "confianza": "Confianza.mp4",
+  "desconfiar": "Desconfiar.mp4",
+  "desconfianza": "Desconfianza.mp4",
+  "deseo": "Deseo.mp4",
+  "desear": "Desear.mp4",
+  "admirar": "Admirar.mp4",
+  "admiracion": "Admiración.mp4",
+  "ofender": "Ofender.mp4",
+  "ofensa": "Ofensa.mp4",
+  "ofendido": "Ofendido.mp4",
+  "odio": "Odiar.mp4"
+};
+
+// ✅ Generar automáticamente el abecedario
+for (let i = 97; i <= 122; i++) {
+  const letra = String.fromCharCode(i);
+  videos[letra] = `Letra${letra}.mp4`;
 }
 
-function keyCompact(text) {
-  return normalizar(text).replace(/\s+/g, '');
-}
+// 🎬 Reproducir el video correspondiente
+function reproducirVideo(palabra) {
+  palabra = palabra.toLowerCase().replace(/\s+/g, '');
+  texto.textContent = palabra;
 
-// --- Diccionario de palabras simples ---
-const palabras = {
-  "economia": "economia.mp4",
-  "entrerios": "entrerios.mp4",
-  "lapampa": "lapampa.mp4",
-  "larioja": "larioja.mp4",
-  "rionegro": "rionegro.mp4",
-  "sanjuan": "sanjuan.mp4",
-  "sanluis": "sanluis.mp4",
-  "santacruz": "santacruz.mp4",
-  "santafe": "santafe.mp4",
-  "santiagodelestero": "santiagodelestero.mp4",
-  "antartidaargentina": "antartidaargentina.mp4",
-  "tierradelfuego": "tierradelfuego.mp4",
-  "hijohija": "hijohija.mp4",
-  "bebe": "bebe.mp4",
-  "abueloabuela": "abueloabuela.mp4",
-  "hermanohermana": "hermanohermana.mp4",
-  "tiotia": "tiotia.mp4",
-  "padrastro": "padrastro.mp4",
-  "madrastra": "madrastra.mp4",
-  "esposoesposa": "esposoesposa.mp4",
-  "pareja": "pareja.mp4",
-  "solterosoltera": "solterosoltera.mp4",
-  "separadoseparada": "separadoseparada.mp4",
-  "edad": "edad.mp4",
-  "cumpleanos": "cumpleanos.mp4",
-  "extranjeroextranjera": "extranjeroextranjera.mp4",
-  "catolicocatolica": "catolicocatolica.mp4",
-  "jesucristo": "jesucristo.mp4",
-  "jesus": "jesus.mp4",
-  "iglesia": "iglesia.mp4",
-  "administrar": "administrar.mp4",
-  "negociar": "negociar.mp4",
-  "estafa": "estafa.mp4",
-  "estafar": "estafar.mp4",
-  "ahorro": "ahorro.mp4",
-  "ahorrar": "ahorrar.mp4",
-  "deber": "deber.mp4",
-  "barato": "barato.mp4",
-  "caro": "caro.mp4",
-  "jefejefa": "jefejefa.mp4",
-  "empleadoempleada": "empleadoempleada.mp4",
-  "jubiladojubilada": "jubiladojubilada.mp4",
-  "sueldo": "sueldo.mp4",
-  "echar": "echar.mp4",
-  "despedir": "despedir.mp4",
-  "renunciar": "renunciar.mp4",
-  "feriado": "feriado.mp4",
-  "fiesta": "fiesta.mp4",
-  "bomberobombera": "bomberobombera.mp4",
-  "enfermeroenfermera": "enfermeroenfermera.mp4",
-  "nacional": "nacional.mp4",
-  "nacionalmente": "nacionalmente.mp4",
-  "internacional": "internacional.mp4",
-  "internacionalmente": "internacionalmente.mp4",
-  "poder": "poder.mp4",
-  "compu": "compu.mp4",
-  "computadora": "computadora.mp4",
-  "jugar": "jugar.mp4",
-  "dibujar": "dibujar.mp4",
-  "ruido": "ruido.mp4",
-  "persona": "persona.mp4",
-  "personas": "personas.mp4",
-  "gente": "gente.mp4",
-  "personalidad": "personalidad.mp4",
-  "sentimiento": "sentimiento.mp4",
-  "emocion": "emocion.mp4",
-  "emocionado": "emocionado.mp4",
-  "emocionarse": "emocionarse.mp4",
-  "confianza": "confianza.mp4",
-  "desconfianza": "desconfianza.mp4",
-  "deseo": "deseo.mp4",
-  "admiracion": "admiracion.mp4",
-  "ofensa": "ofensa.mp4",
-  "ofendido": "ofendido.mp4"
-};
-
-// --- Verbos y conjugaciones ---
-const conjugaciones = {
-  amar: ["amar","amo","amas","amás","ama","amamos","aman","amé","amaste","amó","amamos","amaron","amaba","amabas","amábamos","amaban","amaré","amarás","amará","amaremos","amarán","amaría","amarías","amaríamos","amarían","amando","amado","he amado","has amado","hemos amado","han amado"],
-  querer: ["querer","quiero","quieres","querés","quiere","queremos","quieren","quise","quisiste","quiso","quisimos","quisieron","quería","querías","queríamos","querían","querré","querrás","querrá","querremos","querrán","querría","querrías","querríamos","querrían","queriendo","querido","he querido","hemos querido","han querido"],
-  sentir: ["sentir","siento","sientes","sentís","siente","sentimos","sienten","sentí","sentiste","sintió","sentimos","sintieron","sentía","sentías","sentíamos","sentían","sentiré","sentirás","sentirá","sentiremos","sentirán","sentiría","sentirías","sentiríamos","sentirían","sintiendo","sentido","he sentido","hemos sentido","han sentido"],
-  odiar: ["odiar","odio","odias","odiás","odia","odiamos","odian","odié","odiaste","odió","odiamos","odiaron","odiaba","odiabas","odiábamos","odiaban","odiaré","odiarás","odiará","odiaremos","odiarán","odiaría","odiarías","odiaríamos","odiarían","odiando","odiado","he odiado","hemos odiado","han odiado"],
-  ahorrar: ["ahorrar","ahorro","ahorras","ahorrás","ahorra","ahorramos","ahorran","ahorré","ahorraste","ahorró","ahorramos","ahorraron","ahorraba","ahorrabas","ahorrábamos","ahorraban","ahorraré","ahorrarás","ahorrará","ahorraremos","ahorrarán","ahorraría","ahorrarías","ahorraríamos","ahorrarían","ahorrando","ahorrado","he ahorrado","hemos ahorrado","han ahorrado"],
-  cantar: ["cantar","canto","cantas","cantás","canta","cantamos","cantan","canté","cantaste","cantó","cantamos","cantaron","cantaba","cantabas","cantábamos","cantaban","cantaré","cantarás","cantará","cantaremos","cantarán","cantaría","cantarías","cantaríamos","cantarían","cantando","cantado","he cantado","hemos cantado","han cantado"],
-  bailar: ["bailar","bailo","bailas","bailás","baila","bailamos","bailan","bailé","bailaste","bailó","bailamos","bailaron","bailaba","bailabas","bailábamos","bailaban","bailaré","bailarás","bailará","bailaremos","bailarán","bailaría","bailarías","bailaríamos","bailarían","bailando","bailado","he bailado","hemos bailado","han bailado"]
-};
-
-// --- Alias: mapear varias palabras a un mismo video ---
-const alias = {
-  "esposo": "esposoesposa",
-  "esposa": "esposoesposa",
-  "hijo": "hijohija",
-  "hija": "hijohija",
-  "abuelo": "abueloabuela",
-  "abuela": "abueloabuela",
-  "hermano": "hermanohermana",
-  "hermana": "hermanohermana",
-  "tio": "tiotia",
-  "tia": "tiotia",
-  "soltero": "solterosoltera",
-  "soltera": "solterosoltera",
-  "separado": "separadoseparada",
-  "separada": "separadoseparada",
-  "bombero": "bomberobombera",
-  "bombera": "bomberobombera",
-  "enfermero": "enfermeroenfermera",
-  "enfermera": "enfermeroenfermera",
-  "jefe": "jefejefa",
-  "jefa": "jefejefa",
-  "empleado": "empleadoempleada",
-  "empleada": "empleadoempleada",
-  "jubilado": "jubiladojubilada",
-  "jubilada": "jubiladojubilada"
-};
-
-// --- Buscar video según palabra ---
-function buscarVideo(palabra) {
-  const key = keyCompact(palabra);
-  if (alias[key]) return palabras[alias[key]];
-  if (palabras[key]) return palabras[key];
-  for (const verbo in conjugaciones) {
-    if (conjugaciones[verbo].includes(key)) return `${verbo}.mp4`;
+  let archivo = videos[palabra];
+  if (!archivo) {
+    // Si no hay palabra, reproducir letra por letra
+    const letras = palabra.split('');
+    reproducirLetras(letras);
+    return;
   }
-  return null;
+
+  const nombreArchivo = archivo.charAt(0).toUpperCase() + archivo.slice(1);
+  const ruta = `${videoPath}${nombreArchivo}`;
+
+  videoSource.src = ruta;
+  video.load();
+  video.play().catch(e => console.error("❌ Error al reproducir:", e));
 }
 
-// --- Mostrar texto ---
-function mostrarTextoReconocido(text) {
-  if (texto) texto.textContent = text;
-}
-
-// --- Procesar texto y reproducir video ---
-function procesarTextoSecuencial(text) {
-  const videoFile = buscarVideo(text);
-  if (videoFile) {
-    videoSource.src = `palabras/${videoFile}`;
-    videoSeña.load();
-    videoSeña.style.display = "block";
-    videoSeña.oncanplay = () => {
-      videoSeña.play().catch(err => console.warn("⚠️ No se pudo reproducir automáticamente:", err));
-    };
-  } else {
-    texto.textContent = "❌ Palabra no encontrada";
-    videoSeña.style.display = "none";
+// 🅰️ Si no hay palabra, mostrar cada letra
+async function reproducirLetras(letras) {
+  for (const letra of letras) {
+    const archivo = `Letra${letra}.mp4`;
+    const ruta = `${videoPath}${archivo}`;
+    videoSource.src = ruta;
+    video.load();
+    await video.play().catch(() => {});
+    await new Promise(resolve => video.onended = resolve);
   }
 }
 
-// --- Eventos ---
-if (reconocimiento) {
-  boton.addEventListener('click', () => {
-    try {
-      reconocimiento.start();
-    } catch (err) {
-      console.error('No se pudo iniciar reconocimiento:', err);
-    }
-  });
-
-  reconocimiento.onresult = (event) => {
-    const speechText = event.results[0][0].transcript.toLowerCase();
-    mostrarTextoReconocido(speechText);
-    procesarTextoSecuencial(speechText);
-  };
-}
-
-entradaTexto.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    const userInput = entradaTexto.value.toLowerCase().trim();
-    mostrarTextoReconocido(userInput);
-    procesarTextoSecuencial(userInput);
+// 🎤 Entrada de texto manual
+inputTexto.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    const palabra = inputTexto.value.trim();
+    if (palabra) reproducirVideo(palabra);
   }
+});
+
+// 🎧 Control de velocidad
+speedControl.addEventListener("input", function () {
+  const velocidad = parseFloat(this.value);
+  video.playbackRate = velocidad;
+  speedValue.textContent = `${velocidad.toFixed(2)}x`;
+});
+
+// ♿ Contraste alto
+document.getElementById("contrastToggle").addEventListener("click", () => {
+  document.body.classList.toggle("high-contrast");
 });
