@@ -230,7 +230,7 @@ function procesarTextoSecuencial(text) {
         videosAReproducir.push("Palabras/primera vez.mp4");
     }
     if (text.includes("año pasado") || text.includes("ano pasado")) {
-        videosAReproducir.push("Palabras/año pasado.mp4");
+        videosAReproducir.push("Palabras/ano pasado.mp4");
     }
 
     // ---- Palabras individuales ----
@@ -374,3 +374,4 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
