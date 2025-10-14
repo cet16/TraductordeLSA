@@ -153,16 +153,16 @@ const palabrasFijas = {
     "pasado": "Pasado",
     "último": "Ultimo", "Último": "ultimo",
     "minuto": "Minuto",
-    "hora": "Hora",
+    "Hora": "Hora",
     "mes": "Mes",
     "semana": "Semana",
     "domingo": "Domingo",
     "lunes": "Lunes",
     "martes": "Martes",
-    "miércoles": "Miercoles", "Miércoles": "miercoles",
+    "miercoles": "Miercoles",
     "jueves": "Jueves",
     "viernes": "Viernes",
-    "sábado": "sabado", "Sábado": "sabado",
+    "sábado": "Sabado", "Sábado": "sabado",
     "mediodía": "Mediodia", "MediodÍa": "mediodia",
     "todavía": "Todavia", "Todavía": "todavia",
     "siempre": "Siempre",
@@ -374,6 +374,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
