@@ -146,38 +146,38 @@ const palabrasFijas = {
     // Tiempo / frecuencia
     "ayer": "Ayer",
     "hoy": "Hoy",
-    "mañana": "mañana", "manana": "mañana",
-    "año": "año", "ano": "año",
-    "año pasado": "año pasado", "ano pasado": "año pasado",
+    "mañana": "Mañana", "manana": "mañana",
+    "año": "Año", "Ano": "año",
+    "año pasado": "año pasado", "Ano pasado": "año pasado",
     "futuro": "Futuro",
-    "pasado": "pasado",
-    "último": "ultimo", "ultimo": "ultimo",
+    "pasado": "Pasado",
+    "último": "Ultimo", "Último": "ultimo",
     "minuto": "minuto",
     "hora": "hora",
     "mes": "mes",
-    "semana": "semana",
-    "domingo": "domingo",
-    "lunes": "lunes",
-    "martes": "martes",
-    "miércoles": "miercoles", "miercoles": "miercoles",
-    "jueves": "jueves",
-    "viernes": "viernes",
-    "sábado": "sabado", "sabado": "sabado",
-    "mediodía": "mediodia", "mediodia": "mediodia",
-    "todavía": "todavia", "todavia": "todavia",
-    "siempre": "siempre",
-    "rápido": "rapido", "rapido": "rapido",
-    "despacio": "despacio",
-    "temprano": "temprano",
-    "tarde": "tarde",
-    "hasta": "hasta",
+    "semana": "Semana",
+    "domingo": "Domingo",
+    "lunes": "Lunes",
+    "martes": "Martes",
+    "miércoles": "Miercoles", "Miércoles": "miercoles",
+    "jueves": "Jueves",
+    "viernes": "Viernes",
+    "sábado": "sabado", "Sábado": "sabado",
+    "mediodía": "Mediodia", "MediodÍa": "mediodia",
+    "todavía": "Todavia", "Todavía": "todavia",
+    "siempre": "Siempre",
+    "rápido": "Rapido", "Rápido": "rapido",
+    "despacio": "Despacio",
+    "temprano": "Temprano",
+    "tarde": "Tarde",
+    "hasta": "Hasta",
 
     // Lugar / direcciones / cualidades
-    "cerca": "cerca",
-    "derecha": "derecha",
-    "izquierda": "izquierda",
-    "importante": "importante",
-    "limpio": "limpio",
+    "cerca": "Cerca",
+    "derecha": "Derecha",
+    "izquierda": "Izquierda",
+    "importante": "Importante",
+    "limpio": "Limpio",
 
     // Días y frases sociales
     "hola": "hola",
@@ -293,8 +293,8 @@ function procesarTextoSecuencial(text) {
         }
 
         // Variantes de "anteayer"
-        if (palabra === "anteayer" || palabra === "antayer") {
-            videosAReproducir.push("Palabras/antayer.mp4"); // según tu captura
+        if (palabra === "anteayer" || palabra === "anteayer") {
+            videosAReproducir.push("Palabras/Anteayer.mp4"); // según tu captura
             continue;
         }
     }
@@ -374,6 +374,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
