@@ -149,11 +149,11 @@ const palabrasFijas = {
     "Mañana": "Mañana", "Manana": "Mañana",
     "año": "Año", "Ano": "año",
     "año pasado": "Año pasado", "Ano pasado": "año pasado",
-    "Futuro": "Futuro",
+    "Futuro": "futuro",
     "pasado": "Pasado",
     "último": "Ultimo", "Último": "ultimo",
-    "minuto": "Minuto",
-    "Hora": "Hora",
+    "Minuto": "minuto",
+    "Hora": "hora",
     "mes": "Mes",
     "semana": "Semana",
     "domingo": "Domingo",
@@ -375,6 +375,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
