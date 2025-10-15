@@ -162,11 +162,11 @@ const palabrasFijas = {
     "miercoles": "Miercoles",
     "jueves": "Jueves",
     "viernes": "Viernes",
-    "sabado": "Sabado",
+    "sabado": "Sabado", "sábado": "Sabado",
     "mediodía": "Mediodia",
     "todavía": "Todavia", "Todavía": "todavia",
     "siempre": "Siempre",
-    "rápido": "Rapido", "Rápido": "rapido",
+    "rapido": "Rapido",
     "despacio": "Despacio",
     "temprano": "Temprano",
     "tarde": "Tarde",
@@ -274,7 +274,7 @@ function procesarTextoSecuencial(text) {
         // (por si vienen así en el texto y no entran en 'palabrasFijas')
         const archivosUnaPalabra = [
             "ayer","hoy","mañana","manana","futuro","pasado","ultimo","último",
-            "minuto","hora","mes","semana","domingo","lunes","martes",
+            "minuto","hora","Hora","mes","semana","domingo","lunes","martes",
             "miercoles","miércoles","jueves","viernes","sabado","sábado",
             "mediodia","mediodía","todavia","todavía","siempre","rapido","rápido",
             "despacio","temprano","tarde","cerca","derecha","izquierda",
@@ -375,6 +375,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
