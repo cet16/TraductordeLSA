@@ -162,8 +162,8 @@ const palabrasFijas = {
     "miercoles": "Miercoles",
     "jueves": "Jueves",
     "viernes": "Viernes",
-    "sábado": "Sabado", "Sábado": "sabado",
-    "mediodía": "Mediodia", "MediodÍa": "mediodia",
+    "sabado": "Sabado",
+    "mediodía": "Mediodia",
     "todavía": "Todavia", "Todavía": "todavia",
     "siempre": "Siempre",
     "rápido": "Rapido", "Rápido": "rapido",
@@ -171,6 +171,7 @@ const palabrasFijas = {
     "temprano": "Temprano",
     "tarde": "Tarde",
     "hasta": "Hasta",
+    "internacional": "Internacional",
 
     // Lugar / direcciones / cualidades
     "cerca": "Cerca",
@@ -374,6 +375,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
