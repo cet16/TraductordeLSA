@@ -144,9 +144,9 @@ const palabrasFijas = {
 
     // ===== Nuevas palabras/expresiones (según tu carpeta) =====
     // Tiempo / frecuencia
-    "Ayer": "Ayer",
-    "Hoy": "Hoy",
-    "Mañana": "Mañana", "Manana": "Mañana",
+    "ayer": "Ayer",
+    "hoy": "Hoy",
+    "mañana": "Mañana",
     "año": "Año", "Ano": "año",
     "año pasado": "Año pasado", "Ano pasado": "año pasado",
     "Futuro": "futuro",
@@ -375,6 +375,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
