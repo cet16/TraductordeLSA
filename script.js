@@ -162,7 +162,7 @@ const palabrasFijas = {
     "miercoles": "Miercoles",
     "jueves": "Jueves",
     "viernes": "Viernes",
-    "sabado": "Sabado", "sábado": "Sabado",
+    "sabado": "Sabado", "Sabado": "sábado",
     "mediodía": "Mediodia",
     "todavía": "Todavia", "Todavía": "todavia",
     "siempre": "Siempre",
@@ -375,6 +375,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
