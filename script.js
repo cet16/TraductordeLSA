@@ -38,7 +38,11 @@ reconocimiento.onend = () => {
 entradaTexto.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
-        const userInput = entradaTexto.value.toLowerCase();
+
+        // ✅ Capturamos y normalizamos el texto (sin tildes, sin mayúsculas)
+        let userInput = entradaTexto.value.trim().toLowerCase();
+        userInput = userInput.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+
         mostrarTextoReconocido(userInput);
         procesarTextoSecuencial(userInput);
     }
@@ -376,6 +380,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
