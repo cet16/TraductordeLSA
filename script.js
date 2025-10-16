@@ -323,6 +323,7 @@ function reproducirSecuencialmente(lista) {
     const path = lista.shift();
     videoSource.src = path;
     videoSeña.load();
+    videoSeña.muted = true; // 🔇 Mutea el video automáticamente
     videoSeña.style.display = "block";
 
     // ✅ Usar la velocidad actual elegida por el usuario (no pisar con 0.75)
