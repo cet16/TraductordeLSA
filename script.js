@@ -201,53 +201,72 @@ function procesarTextoSecuencial(text) {
     const palabras = text.split(" ");
     const videosAReproducir = [];
 
-    // ---- Frases fijas (multi-palabra) ----
-    // Mantengo tus existentes y agrego las nuevas vistas en la carpeta
-    if (text.includes("como estas") || text.includes("cómo estás")) {
-        videosAReproducir.push("Palabras/comoestas.mp4");
-    }
-    if (text.includes("vos cómo te llamas") || text.includes("cómo te llamas")) {
-        videosAReproducir.push("Palabras/comotellamas.mp4");
-    }
-    if (text.includes("me llamo luana")) {
-        videosAReproducir.push("Palabras/llamoluana.mp4");
-    }
-    // Nuevas:
-    if (text.includes("como quieres") || text.includes("cómo quieres")) {
-        videosAReproducir.push("Palabras/como quieres.mp4");
-    }
-    if (text.includes("lo siento")) {
-        videosAReproducir.push("Palabras/lo siento.mp4");
-    }
-    if (text.includes("hace poco")) {
-        videosAReproducir.push("Palabras/hace poco.mp4");
-    }
-    if (text.includes("a veces")) {
-        videosAReproducir.push("Palabras/a veces.mp4");
-    }
-    if (text.includes("toda la noche")) {
-        videosAReproducir.push("Palabras/toda la noche.mp4");
-    }
-    if (text.includes("todos los dias") || text.includes("todos los días")) {
-        videosAReproducir.push("Palabras/todos los dias.mp4");
-    }
-    if (text.includes("primera vez")) {
-        videosAReproducir.push("Palabras/primera vez.mp4");
-    }
-    if (text.includes("año pasado") || text.includes("ano pasado")) {
-        videosAReproducir.push("Palabras/ano pasado.mp4");
-    }
+    // Analiza de izquierda a derecha respetando el orden del texto
+    for (let i = 0; i < palabras.length; i++) {
+        let palabra = palabras[i].trim();
 
-    // ---- Palabras individuales ----
-    for (let palabra of palabras) {
-        palabra = palabra.trim();
+        // 👉 Detección de frases compuestas directamente en el flujo
+        const dosPalabras = (palabras[i] + " " + (palabras[i + 1] || "")).trim();
+        const tresPalabras = (palabras[i] + " " + (palabras[i + 1] || "") + " " + (palabras[i + 2] || "")).trim();
 
-        // Saludos simples
-        if (palabra === "hola") {
-            videosAReproducir.push("Palabras/hola.mp4");
+        // === Frases ===
+        if (tresPalabras === "vos cómo te llamas" || tresPalabras === "cómo te llamas") {
+            videosAReproducir.push("Palabras/comotellamas.mp4");
+            i += 2; // saltar las siguientes palabras
+            continue;
+        }
+        if (dosPalabras === "como estas" || dosPalabras === "cómo estás") {
+            videosAReproducir.push("Palabras/comoestas.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "me llamo luana") {
+            videosAReproducir.push("Palabras/llamoluana.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "como quieres" || dosPalabras === "cómo quieres") {
+            videosAReproducir.push("Palabras/comoquieras.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "lo siento") {
+            videosAReproducir.push("Palabras/losiento.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "hace poco") {
+            videosAReproducir.push("Palabras/hacepoco.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "a veces") {
+            videosAReproducir.push("Palabras/aveces.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "toda la" && (palabras[i + 2] || "") === "noche") {
+            videosAReproducir.push("Palabras/todalanoche.mp4");
+            i += 2;
+            continue;
+        }
+        if (tresPalabras === "todos los dias" || tresPalabras === "todos los días") {
+            videosAReproducir.push("Palabras/todoslosdias.mp4");
+            i += 2;
+            continue;
+        }
+        if (dosPalabras === "primera vez") {
+            videosAReproducir.push("Palabras/primeravez.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "año pasado" || dosPalabras === "ano pasado") {
+            videosAReproducir.push("Palabras/añopasado.mp4");
+            i += 1;
             continue;
         }
 
+        // === Palabras individuales ===
         // Letras
         const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
         if (letras.includes(palabra)) {
@@ -255,7 +274,7 @@ function procesarTextoSecuencial(text) {
             continue;
         }
 
-        // Verbo conjugado
+        // Verbos
         for (let verbo in conjugaciones) {
             if (conjugaciones[verbo].includes(palabra)) {
                 const nombreArchivo = (verbo === "contar" || verbo === "narrar")
@@ -266,7 +285,7 @@ function procesarTextoSecuencial(text) {
             }
         }
 
-        // Palabras fijas sueltas (una sola palabra)
+        // Palabras fijas
         for (let fija in palabrasFijas) {
             if (palabra === fija) {
                 videosAReproducir.push(`Palabras/${palabrasFijas[fija]}.mp4`);
@@ -274,33 +293,22 @@ function procesarTextoSecuencial(text) {
             }
         }
 
-        // Casos de una sola palabra que están como archivo exacto:
-        // (por si vienen así en el texto y no entran en 'palabrasFijas')
+        // Palabras sueltas exactas
         const archivosUnaPalabra = [
             "ayer","hoy","mañana","manana","futuro","pasado","ultimo","último",
-            "minuto","hora","Hora","mes","semana","domingo","lunes","martes",
+            "minuto","hora","mes","semana","domingo","lunes","martes",
             "miercoles","miércoles","jueves","viernes","sabado","sábado",
             "mediodia","mediodía","todavia","todavía","siempre","rapido","rápido",
             "despacio","temprano","tarde","cerca","derecha","izquierda",
             "importante","limpio"
         ];
         if (archivosUnaPalabra.includes(palabra)) {
-            // Normalizamos a los nombres de archivo que vi en tu carpeta
             const normalizaciones = {
-                "manana":"mañana", "miercoles":"miercoles", "miércoles":"miercoles",
-                "sabado":"sabado", "sábado":"sabado",
-                "mediodía":"mediodia", "todavía":"todavia",
-                "rápido":"rapido", "último":"ultimo"
+                "manana":"mañana","miércoles":"miercoles","sabado":"sabado","sábado":"sabado",
+                "mediodía":"mediodia","todavía":"todavia","rápido":"rapido","último":"ultimo"
             };
             const nombre = normalizaciones[palabra] || palabra;
             videosAReproducir.push(`Palabras/${nombre}.mp4`);
-            continue;
-        }
-
-        // Variantes de "anteayer"
-        if (palabra === "anteayer" || palabra === "anteayer") {
-            videosAReproducir.push("Palabras/Anteayer.mp4"); // según tu captura
-            continue;
         }
     }
 
@@ -380,6 +388,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
