@@ -107,7 +107,7 @@ const conjugaciones = {
         "estando", "estado", "he estado", "hemos estado", "han estado"
     ],
 
-    // ===== Verbos nuevos detectados en tu carpeta =====
+
     apurar: [
         "apurar", "apuro", "apurás", "apuras", "apura", "apuramos", "apuran",
         "apuré", "apuraste", "apuró", "apuramos", "apuraron",
@@ -151,8 +151,8 @@ const palabrasFijas = {
     "ayer": "Ayer",
     "hoy": "Hoy",
     "mañana": "Mañana",
-    "año": "Año", "Ano": "año",
-    "año pasado": "Año pasado", "Ano pasado": "año pasado",
+    "año": "Año",
+    "año pasado": "Año pasado",
     "Futuro": "futuro",
     "pasado": "Pasado",
     "ultimo": "Ultimo",
@@ -166,9 +166,9 @@ const palabrasFijas = {
     "miercoles": "Miercoles",
     "jueves": "Jueves",
     "viernes": "Viernes",
-    "sabado": "Sabado", "Sabado": "sábado",
+    "sabado": "Sabado",
     "mediodía": "Mediodia",
-    "todavía": "Todavia", "Todavía": "todavia",
+    "todavía": "Todavia",
     "siempre": "Siempre",
     "rapido": "Rapido",
     "despacio": "Despacio",
@@ -389,6 +389,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
