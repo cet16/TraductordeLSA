@@ -8,12 +8,12 @@ function normalizar(texto) {
   let t = String(texto).trim();
 
   // proteger ñ y Ñ con el mismo marcador (insensible a mayúsculas)
-  t = t.replace(/ñ/gi, '__ENHE__');
+  t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHE__');
 
   // eliminar tildes
   t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-  // restaurar ñ
+  // restaurar ñ antes de pasar a minúsculas
   t = t.replace(/__ENHE__/g, 'ñ');
 
   // pasar a minúsculas y limpiar signos
@@ -410,6 +410,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
