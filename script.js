@@ -2,12 +2,16 @@
 // ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
+// ==========================================================
+// ============== Traductor Voz/Text → Señas ==============
+// ==========================================================
+
 // 🔤 Normalización que elimina tildes pero preserva la ñ
 function normalizar(texto) {
   if (!texto) return '';
   let t = String(texto).trim();
 
-  // proteger ñ y Ñ con el mismo marcador (insensible a mayúsculas)
+  // proteger ñ y Ñ con marcador único
   t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHE__');
 
   // eliminar tildes
