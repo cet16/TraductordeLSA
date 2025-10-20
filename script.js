@@ -2,10 +2,6 @@
 // ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
-// ==========================================================
-// ============== Traductor Voz/Text → Señas ==============
-// ==========================================================
-
 // 🔤 Normalización que elimina tildes pero preserva la ñ
 function normalizar(texto) {
   if (!texto) return '';
@@ -78,77 +74,75 @@ entradaTexto.addEventListener('keypress', (event) => {
 // (mantenemos el mismo formato que ya usabas)
 // ==========================================================
 const conjugaciones = {
-    dialogar: [
-        "dialogar", "dialogo", "dialogás", "dialogas", "dialoga", "dialogamos", "dialogan",
-        "dialogué", "dialogaste", "dialogó", "dialogamos", "dialogaron",
-        "dialogaba", "dialogabas", "dialogábamos", "dialogaban",
-        "dialogaré", "dialogarás", "dialogará", "dialogaremos", "dialogarán",
-        "dialogaría", "dialogarías", "dialogaríamos", "dialogarían",
-        "dialogando", "dialogado", "he dialogado", "hemos dialogado", "han dialogado"
-    ],
-    hablar: [
-        "hablar", "hablo", "hablás", "hablas", "habla", "hablamos", "hablan",
-        "hablé", "hablaste", "habló", "hablamos", "hablaron",
-        "hablaba", "hablabas", "hablábamos", "hablaban",
-        "hablaré", "hablarás", "hablará", "hablaremos", "hablarán",
-        "hablaría", "hablarías", "hablaríamos", "hablarían",
-        "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
-    ],
-    decir: [
-        "decir", "digo", "decís", "dices", "dice", "decimos", "dicen",
-        "dije", "dijiste", "dijo", "dijimos", "dijeron",
-        "decía", "decías", "decíamos", "decían",
-        "diré", "dirás", "dirá", "diremos", "dirán",
-        "diría", "dirías", "diríamos", "dirían",
-        "diciendo", "dicho", "he dicho", "hemos dicho", "han dicho"
-    ],
-    contar: [
-        "contar", "cuento", "contás", "contas", "cuenta", "contamos", "cuentan",
-        "conté", "contaste", "contó", "contamos", "contaron",
-        "contaba", "contabas", "contábamos", "contaban",
-        "contaré", "contarás", "contará", "contaremos", "contarán",
-        "contaría", "contarías", "contaríamos", "contarían",
-        "contando", "contado", "he contado", "hemos contado", "han contado"
-    ],
-    narrar: [
-        "narrar", "narro", "narrás", "narras", "narra", "narramos", "narran",
-        "narré", "narraste", "narró", "narramos", "narraron",
-        "narraba", "narrabas", "narrábamos", "narraban",
-        "narraré", "narrarás", "narrará", "narraremos", "narrarán",
-        "narrando", "narrado", "he narrado", "hemos narrado", "han narrado"
-    ],
-    explicar: [
-        "explicar", "explico", "explicás", "explicas", "explica", "explicamos", "explican",
-        "expliqué", "explicaste", "explicó", "explicamos", "explicaron",
-        "explicaba", "explicabas", "explicábamos", "explicaban",
-        "explicaré", "explicarás", "explicará", "explicaremos", "explicarán",
-        "explicando", "explicado", "he explicado", "hemos explicado", "han explicado"
-    ],
-    estar: [
-        "estar", "estoy", "estás", "está", "estamos", "están",
-        "estuve", "estuviste", "estuvo", "estuvimos", "estuvieron",
-        "estaba", "estabas", "estábamos", "estaban",
-        "estaré", "estarás", "estará", "estaremos", "estarán",
-        "estando", "estado", "he estado", "hemos estado", "han estado"
-    ],
-
-
-    apurar: [
-        "apurar", "apuro", "apurás", "apuras", "apura", "apuramos", "apuran",
-        "apuré", "apuraste", "apuró", "apuramos", "apuraron",
-        "apuraba", "apurabas", "apurábamos", "apuraban",
-        "apuraré", "apurarás", "apurará", "apuraremos", "apurarán",
-        "apuraría", "apurarías", "apuraríamos", "apurarían",
-        "apurando", "apurado", "he apurado", "hemos apurado", "han apurado"
-    ],
-    llegar: [
-        "llegar", "llego", "llegás", "llegas", "llega", "llegamos", "llegan",
-        "llegué", "llegaste", "llegó", "llegamos", "llegaron",
-        "llegaba", "llegabas", "llegábamos", "llegaban",
-        "llegaré", "llegarás", "llegará", "llegaremos", "llegarán",
-        "llegaría", "llegarías", "llegaríamos", "llegarían",
-        "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
-    ]
+  dialogar: [
+    "dialogar", "dialogo", "dialogas", "dialogas", "dialoga", "dialogamos", "dialogan",
+    "dialogue", "dialogaste", "dialogo", "dialogamos", "dialogaron",
+    "dialogaba", "dialogabas", "dialogabamos", "dialogaban",
+    "dialogare", "dialogaras", "dialogara", "dialogaremos", "dialogaran",
+    "dialogaria", "dialogarias", "dialogariamos", "dialogarian",
+    "dialogando", "dialogado", "he dialogado", "hemos dialogado", "han dialogado"
+  ],
+  hablar: [
+    "hablar", "hablo", "hablas", "hablas", "habla", "hablamos", "hablan",
+    "hable", "hablaste", "hablo", "hablamos", "hablaron",
+    "hablaba", "hablabas", "hablabamos", "hablaban",
+    "hablare", "hablaras", "hablara", "hablaremos", "hablaran",
+    "hablaria", "hablarias", "hablariamos", "hablarian",
+    "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
+  ],
+  decir: [
+    "decir", "digo", "decis", "dices", "dice", "decimos", "dicen",
+    "dije", "dijiste", "dijo", "dijimos", "dijeron",
+    "decia", "decias", "deciamos", "decian",
+    "dire", "diras", "dira", "diremos", "diran",
+    "diria", "dirias", "diriamos", "dirian",
+    "diciendo", "dicho", "he dicho", "hemos dicho", "han dicho"
+  ],
+  contar: [
+    "contar", "cuento", "contas", "contas", "cuenta", "contamos", "cuentan",
+    "conte", "contaste", "conto", "contamos", "contaron",
+    "contaba", "contabas", "contabamos", "contaban",
+    "contare", "contaras", "contara", "contaremos", "contaran",
+    "contaria", "contarias", "contariamos", "contarian",
+    "contando", "contado", "he contado", "hemos contado", "han contado"
+  ],
+  narrar: [
+    "narrar", "narro", "narras", "narras", "narra", "narramos", "narran",
+    "narre", "narraste", "narro", "narramos", "narraron",
+    "narraba", "narrabas", "narrabamos", "narraban",
+    "narrare", "narraras", "narrara", "narraremos", "narraran",
+    "narrando", "narrado", "he narrado", "hemos narrado", "han narrado"
+  ],
+  explicar: [
+    "explicar", "explico", "explicas", "explicas", "explica", "explicamos", "explican",
+    "explique", "explicaste", "explico", "explicamos", "explicaron",
+    "explicaba", "explicabas", "explicabamos", "explicaban",
+    "explicare", "explicaras", "explicara", "explicaremos", "explicaran",
+    "explicando", "explicado", "he explicado", "hemos explicado", "han explicado"
+  ],
+  estar: [
+    "estar", "estoy", "estas", "esta", "estamos", "estan",
+    "estuve", "estuviste", "estuvo", "estuvimos", "estuvieron",
+    "estaba", "estabas", "estabamos", "estaban",
+    "estare", "estaras", "estara", "estaremos", "estaran",
+    "estando", "estado", "he estado", "hemos estado", "han estado"
+  ],
+  apurar: [
+    "apurar", "apuro", "apuras", "apuras", "apura", "apuramos", "apuran",
+    "apure", "apuraste", "apuro", "apuramos", "apuraron",
+    "apuraba", "apurabas", "apurabamos", "apuraban",
+    "apurare", "apuraras", "apurara", "apuraremos", "apuraran",
+    "apuraria", "apurarias", "apurariamos", "apurarian",
+    "apurando", "apurado", "he apurado", "hemos apurado", "han apurado"
+  ],
+  llegar: [
+    "llegar", "llego", "llegas", "llegas", "llega", "llegamos", "llegan",
+    "llegue", "llegaste", "llego", "llegamos", "llegaron",
+    "llegaba", "llegabas", "llegabamos", "llegaban",
+    "llegare", "llegaras", "llegara", "llegaremos", "llegaran",
+    "llegaria", "llegarias", "llegariamos", "llegarian",
+    "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
+  ]
 };
 
 // ==========================================================
@@ -174,7 +168,6 @@ const palabrasFijas = {
 
     // ===== Nuevas palabras/expresiones (según tu carpeta) =====
     // Tiempo / frecuencia
-    "ayer": "Ayer",
     "hoy": "Hoy",
     "mañana": "Mañana",
     "año": "Año",
@@ -415,6 +408,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
