@@ -5,10 +5,17 @@
 // 🔤 Normalización que elimina tildes pero preserva la ñ
 function normalizar(texto) {
   if (!texto) return '';
-  let t = String(texto).trim().toLowerCase();
-  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // elimina tildes
-  t = t.replace(/[¿?¡!,.]/g, ''); // elimina signos
-  t = t.replace(/\s+/g, ' '); // colapsa espacios
+  let t = String(texto).trim();
+
+  // proteger la ñ antes de normalizar
+  t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHEM__');
+
+  t = t.toLowerCase();
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  t = t.replace(/__ENHE__/g, 'ñ').replace(/__ENHEM__/g, 'ñ');
+
+  t = t.replace(/[¿?¡!,.]/g, '');
+  t = t.replace(/\s+/g, ' ');
   return t;
 }
 
@@ -51,8 +58,6 @@ reconocimiento.onend = () => {
 entradaTexto.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-
-    // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
     let userInput = normalizar(entradaTexto.value);
     mostrarTextoReconocido(userInput);
     procesarTextoSecuencial(userInput);
@@ -401,6 +406,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
