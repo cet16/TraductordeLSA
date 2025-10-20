@@ -10,19 +10,34 @@ const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
 const startText = document.getElementById('startText'); // Texto del botón
 
-
-
 // Ocultar el video al cargar la página
 videoSeña.style.display = "none";
 
-// Configuramos el reconocimiento de voz
+// ==========================================================
+// ============= FUNCIÓN DE NORMALIZACIÓN ===================
+// (quita tildes pero preserva la ñ)
+// ==========================================================
+function normalizar(texto) {
+    if (!texto) return "";
+    return texto
+        .toLowerCase()
+        .replace(/ñ/g, "__ENHE__")               // protege ñ
+        .normalize("NFD")                        // separa tildes
+        .replace(/[\u0300-\u036f]/g, "")         // elimina tildes
+        .replace(/__ENHE__/g, "ñ")               // restaura ñ
+        .trim();
+}
+
+// ==========================================================
+// ============= CONFIGURACIÓN DE VOZ =======================
+// ==========================================================
 const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-reconocimiento.lang = 'es-ES'; // Idioma español
+reconocimiento.lang = 'es-ES'; // idioma español
 
 boton.addEventListener('click', () => {
-    activarMicrofono();                    // Enciende indicador
-    if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
-    reconocimiento.start();                // Inicia el reconocimiento de voz
+    activarMicrofono();
+    if (startText) startText.textContent = "Escuchando...";
+    reconocimiento.start();
 });
 
 reconocimiento.onresult = (event) => {
@@ -31,21 +46,23 @@ reconocimiento.onresult = (event) => {
     procesarTextoSecuencial(speechText);
 };
 
-// Apaga el indicador cuando finaliza el reconocimiento
 reconocimiento.onend = () => {
     desactivarMicrofono();
-    if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
+    if (startText) startText.textContent = "Hablar";
 };
 
+// ==========================================================
+// ============ CAPTURA DE TEXTO (ENTER) ====================
+// ==========================================================
 entradaTexto.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
 
-        // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
         let userInput = normalizar(entradaTexto.value);
 
         mostrarTextoReconocido(userInput);
         procesarTextoSecuencial(userInput);
+        entradaTexto.value = ""; // limpia el campo
     }
 });
 
@@ -390,6 +407,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
