@@ -1,5 +1,5 @@
 // ==========================================================
-// ==============  Traductor Voz/Text → Señas  ==============
+// ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
 // Capturamos los elementos del HTML
@@ -10,60 +10,69 @@ const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
 const startText = document.getElementById('startText'); // Texto del botón
 
+// NORMALIZACIÓN segura que PRESERVA la "ñ"
+function normalizar(text) {
+  if (!text) return '';
+
+  // convertir a string y recortar espacios
+  let t = String(text).trim();
+
+  // 1) preservamos ñ/Ñ usando placeholders (evitamos que se descomponga y se pierda)
+  t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHEM__');
+
+  // 2) pasamos a minúsculas (ahora la Ñ placeholder ya está fuera)
+  t = t.toLowerCase();
+
+  // 3) normalizamos y quitamos marcas diacríticas (acentos) — ya no afecta la ñ por el placeholder
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 4) restauramos el placeholder como ñ (en minúscula)
+  t = t.replace(/__ENHE__/g, 'ñ').replace(/__ENHEM__/g, 'ñ');
+
+  // 5) quitamos signos de puntuación que puedan molestar y colapsamos espacios
+  t = t.replace(/[¿?¡!,.]/g, '');
+  t = t.replace(/\s+/g, ' ');
+
+  return t;
+}
+
 // Ocultar el video al cargar la página
 videoSeña.style.display = "none";
 
-// ==========================================================
-// ============= FUNCIÓN DE NORMALIZACIÓN ===================
-// (quita tildes pero preserva la ñ)
-// ==========================================================
-function normalizar(texto) {
-    if (!texto) return "";
-    return texto
-        .toLowerCase()
-        .replace(/ñ/g, "__ENHE__")               // protege ñ
-        .normalize("NFD")                        // separa tildes
-        .replace(/[\u0300-\u036f]/g, "")         // elimina tildes
-        .replace(/__ENHE__/g, "ñ")               // restaura ñ
-        .trim();
-}
-
-// ==========================================================
-// ============= CONFIGURACIÓN DE VOZ =======================
-// ==========================================================
+// Configuramos el reconocimiento de voz
 const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-reconocimiento.lang = 'es-ES'; // idioma español
+reconocimiento.lang = 'es-ES'; // Idioma español
 
 boton.addEventListener('click', () => {
-    activarMicrofono();
-    if (startText) startText.textContent = "Escuchando...";
-    reconocimiento.start();
+  activarMicrofono(); // Enciende indicador
+  if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
+  reconocimiento.start(); // Inicia el reconocimiento de voz
 });
 
 reconocimiento.onresult = (event) => {
-    const speechText = normalizar(event.results[0][0].transcript);
-    mostrarTextoReconocido(speechText);
-    procesarTextoSecuencial(speechText);
+  let speechText = event.results[0][0].transcript;
+  speechText = normalizar(speechText); // ✅ Aplicamos la normalización con ñ preservada
+  mostrarTextoReconocido(speechText);
+  procesarTextoSecuencial(speechText);
 };
 
+// Apaga el indicador cuando finaliza el reconocimiento
 reconocimiento.onend = () => {
-    desactivarMicrofono();
-    if (startText) startText.textContent = "Hablar";
+  desactivarMicrofono();
+  if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
 };
 
-// ==========================================================
-// ============ CAPTURA DE TEXTO (ENTER) ====================
-// ==========================================================
 entradaTexto.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        event.preventDefault();
+  if (event.key === 'Enter') {
+    event.preventDefault();
 
-        let userInput = normalizar(entradaTexto.value);
+    // ✅ Capturamos y normalizamos el texto preservando la ñ
+    let userInput = entradaTexto.value.trim();
+    userInput = normalizar(userInput);
 
-        mostrarTextoReconocido(userInput);
-        procesarTextoSecuencial(userInput);
-        entradaTexto.value = ""; // limpia el campo
-    }
+    mostrarTextoReconocido(userInput);
+    procesarTextoSecuencial(userInput);
+  }
 });
 
 // ==========================================================
@@ -407,6 +416,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
