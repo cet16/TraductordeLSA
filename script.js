@@ -176,7 +176,7 @@ const palabrasFijas = {
     "tarde": "Tarde",
     "hasta": "Hasta",
     "internacional": "Internacional",
-    "administracion": "Administracion",
+    "administracion": "administracion",
 
     // Lugar / direcciones / cualidades
     "cerca": "Cerca",
@@ -389,6 +389,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
