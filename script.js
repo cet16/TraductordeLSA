@@ -260,6 +260,11 @@ function procesarTextoSecuencial(text) {
             i += 1;
             continue;
         }
+        if (dosPalabras === "como quieras" || dosPalabras === "cómo quieras") {
+            videosAReproducir.push("Palabras/comoquieras.mp4");
+            i += 1;
+            continue;
+        }
         if (dosPalabras === "como quieres" || dosPalabras === "cómo quieres") {
             videosAReproducir.push("Palabras/comoquieras.mp4");
             i += 1;
