@@ -233,7 +233,7 @@ function procesarTextoSecuencial(text) {
         const tresPalabras = (palabras[i] + " " + (palabras[i + 1] || "") + " " + (palabras[i + 2] || "")).trim();
 
         // === Frases ===
-        if (tresPalabras === "como te llamas" || tresPalabras === "cómo te llamas") {
+        if (tresPalabras === "vos cómo te llamas" || tresPalabras === "cómo te llamas") {
             videosAReproducir.push("Palabras/comotellamas.mp4");
             i += 2; // saltar las siguientes palabras
             continue;
@@ -248,7 +248,7 @@ function procesarTextoSecuencial(text) {
             i += 1;
             continue;
         }
-        if (dosPalabras === "como quieras" || dosPalabras === "cómo quieras") {
+        if (dosPalabras === "como quieres" || dosPalabras === "cómo quieres") {
             videosAReproducir.push("Palabras/comoquieras.mp4");
             i += 1;
             continue;
@@ -411,6 +411,8 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
+
 
 
 
