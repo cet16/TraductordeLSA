@@ -246,7 +246,7 @@ function procesarTextoSecuencial(text) {
         const tresPalabras = (palabras[i] + " " + (palabras[i + 1] || "") + " " + (palabras[i + 2] || "")).trim();
 
         // === Frases ===
-        if (tresPalabras === "vos como te llamas" || tresPalabras === "como te llamas") {
+        if (tresPalabras === "como te llamas" || tresPalabras === "cómo te llamas") {
             videosAReproducir.push("Palabras/comotellamas.mp4");
             i += 2; // saltar las siguientes palabras
             continue;
@@ -429,6 +429,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
