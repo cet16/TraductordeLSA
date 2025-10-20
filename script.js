@@ -170,7 +170,7 @@ const palabrasFijas = {
     si: "Si", "sí": "Si",
     no: "No",
     negar: "Negar",
-  negacion: "Negar",
+   negacion: "Negar",
     también: "Tambien", "tambien": "Tambien",
     tampoco: "Tampoco",
     yo: "Yo",
@@ -218,6 +218,7 @@ const palabrasFijas = {
     "izquierda": "Izquierda",
     "importante": "Importante",
     "limpio": "Limpio",
+  "ultimo": "Ultimo"
 
     // Días y frases sociales
     "hola": "hola",
@@ -428,6 +429,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
