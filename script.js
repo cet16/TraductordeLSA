@@ -7,13 +7,17 @@ function normalizar(texto) {
   if (!texto) return '';
   let t = String(texto).trim();
 
-  // proteger la ñ antes de normalizar
-  t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHEM__');
+  // proteger ñ y Ñ con el mismo marcador (insensible a mayúsculas)
+  t = t.replace(/ñ/gi, '__ENHE__');
 
-  t = t.toLowerCase();
+  // eliminar tildes
   t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  t = t.replace(/__ENHE__/g, 'ñ').replace(/__ENHEM__/g, 'ñ');
 
+  // restaurar ñ
+  t = t.replace(/__ENHE__/g, 'ñ');
+
+  // pasar a minúsculas y limpiar signos
+  t = t.toLowerCase();
   t = t.replace(/[¿?¡!,.]/g, '');
   t = t.replace(/\s+/g, ' ');
   return t;
@@ -406,6 +410,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
