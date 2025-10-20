@@ -2,63 +2,51 @@
 // ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
-// 🔤 Normalización segura que preserva la letra ñ
-function normalizar(texto) {
-  if (!texto) return '';
-  let t = String(texto).trim();
-  t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHEM__');
-  t = t.toLowerCase();
-  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  t = t.replace(/__ENHE__/g, 'ñ').replace(/__ENHEM__/g, 'ñ');
-  t = t.replace(/[¿?¡!,.]/g, '');
-  t = t.replace(/\s+/g, ' ');
-  return t;
-}
-
 // 🎯 Captura de elementos del DOM
 const boton = document.getElementById('start');
 const texto = document.getElementById('texto');
 const videoSeña = document.getElementById('videoSeña');
 const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
-const startText = document.getElementById('startText');
+const startText = document.getElementById('startText'); // Texto del botón
 
 // 🎬 Ocultar el video al cargar la página
 videoSeña.style.display = "none";
 
 // 🗣️ Configuración del reconocimiento de voz
 const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-reconocimiento.lang = 'es-ES';
+reconocimiento.lang = 'es-ES'; // Idioma español
 
 // ▶️ Evento al hacer clic en el botón de inicio
 boton.addEventListener('click', () => {
-  activarMicrofono();
-  if (startText) startText.textContent = "Escuchando...";
-  reconocimiento.start();
+    activarMicrofono(); // Enciende indicador visual
+    if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
+    reconocimiento.start(); // Inicia el reconocimiento de voz
 });
 
 // 🎧 Evento cuando se detecta voz
 reconocimiento.onresult = (event) => {
-  const speechText = normalizar(event.results[0][0].transcript);
-  mostrarTextoReconocido(speechText);
-  procesarTextoSecuencial(speechText);
+    const speechText = normalizar(event.results[0][0].transcript); // Normaliza el texto
+    mostrarTextoReconocido(speechText); // Muestra el texto en pantalla
+    procesarTextoSecuencial(speechText); // Procesa el texto para mostrar señas
 };
 
 // 🛑 Evento cuando finaliza el reconocimiento
 reconocimiento.onend = () => {
-  desactivarMicrofono();
-  if (startText) startText.textContent = "Hablar";
+    desactivarMicrofono(); // Apaga indicador visual
+    if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
 };
 
 // ⌨️ Evento al presionar Enter en el input de texto
 entradaTexto.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    const userInput = normalizar(entradaTexto.value);
-    mostrarTextoReconocido(userInput);
-    procesarTextoSecuencial(userInput);
-  }
-});
+    if (event.key === 'Enter') {
+        event.preventDefault();
+
+        // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
+        let userInput = normalizar(entradaTexto.value);
+        mostrarTextoReconocido(userInput);
+        procesarTextoSecuencial(userInput);
+    }
 
 // ==========================================================
 // ===============  Conjugaciones por verbo  =================
@@ -363,53 +351,25 @@ function reproducirSecuencialmente(lista) {
 }
 
 // ==========================================================
-// ==============  Reproducción secuencial  =================
-// ==========================================================
-
-let currentSpeed = (() => {
-  const sc = document.getElementById("speedControl");
-  const val = sc ? parseFloat(sc.value) : NaN;
-  return Number.isFinite(val) ? val : 0.75;
-})();
-
-function reproducirSecuencialmente(lista) {
-  if (lista.length === 0) {
-    videoSeña.style.display = "none";
-    return;
-  }
-
-  const path = lista.shift();
-  videoSource.src = path;
-  videoSeña.load();
-  videoSeña.muted = true;
-  videoSeña.style.display = "block";
-  videoSeña.playbackRate = currentSpeed;
-
-  videoSeña.onended = () => {
-    setTimeout(() => {
-      reproducirSecuencialmente(lista);
-    }, 100);
-  };
-  videoSeña.play();
-}
-
-// ==========================================================
 // =====================  Extras UI  ========================
 // ==========================================================
 
+// 🎚 Control de velocidad
 const speedControl = document.getElementById("speedControl");
 const speedValue = document.getElementById("speedValue");
 
+// Sincronizar la etiqueta al cargar
 if (speedValue && speedControl) {
   speedValue.textContent = parseFloat(speedControl.value) + "x";
 }
 
 speedControl.addEventListener("input", () => {
-  currentSpeed = parseFloat(speedControl.value);
-  videoSeña.playbackRate = currentSpeed;
+  currentSpeed = parseFloat(speedControl.value);   // actualizar velocidad global
+  videoSeña.playbackRate = currentSpeed;           // aplicar de inmediato si está reproduciendo
   speedValue.textContent = currentSpeed + "x";
 });
 
+// 🎤 Indicador de micrófono
 function activarMicrofono() {
   boton.classList.add("mic-active");
 }
@@ -417,16 +377,20 @@ function desactivarMicrofono() {
   boton.classList.remove("mic-active");
 }
 
+// ✨ Glow en el texto cuando hay input
 function mostrarTextoReconocido(textoReconocido) {
   texto.textContent = textoReconocido;
   texto.classList.add("glow");
   setTimeout(() => texto.classList.remove("glow"), 1000);
 }
 
+// ♿ Toggle de alto contraste
 const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
+
 
 
 
