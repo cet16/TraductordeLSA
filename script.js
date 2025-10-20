@@ -142,7 +142,22 @@ const conjugaciones = {
     "llegare", "llegaras", "llegara", "llegaremos", "llegaran",
     "llegaria", "llegarias", "llegariamos", "llegarian",
     "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
-  ]
+  ],
+  contar: [
+  "contar", "cuento", "contas", "contas", "cuenta", "contamos", "cuentan",
+  "conte", "contaste", "conto", "contamos", "contaron",
+  "contaba", "contabas", "contabamos", "contaban",
+  "contare", "contaras", "contara", "contaremos", "contaran",
+  "contaria", "contarias", "contariamos", "contarian",
+  "contando", "contado", "he contado", "hemos contado", "han contado"
+],
+narrar: [
+  "narrar", "narro", "narras", "narras", "narra", "narramos", "narran",
+  "narre", "narraste", "narro", "narramos", "narraron",
+  "narraba", "narrabas", "narrabamos", "narraban",
+  "narrare", "narraras", "narrara", "narraremos", "narraran",
+  "narrando", "narrado", "he narrado", "hemos narrado", "han narrado"
+]
 };
 
 // ==========================================================
@@ -171,7 +186,7 @@ const palabrasFijas = {
     "hoy": "Hoy",
     "mañana": "Mañana",
     "año": "Año",
-    "año pasado": "Año pasado",
+    "año pasado": "Añopasado",
     "Futuro": "futuro",
     "pasado": "Pasado",
     "ultimo": "Ultimo",
@@ -408,6 +423,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
