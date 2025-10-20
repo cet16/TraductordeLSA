@@ -160,8 +160,8 @@ const palabrasFijas = {
     "lengua oral": "Lengua oral",
     si: "Si", "sí": "Si",
     no: "No",
-    negar: "negacion",
     negar: "Negar",
+  negacion: "Negar",
     también: "Tambien", "tambien": "Tambien",
     tampoco: "Tampoco",
     yo: "Yo",
@@ -415,6 +415,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
