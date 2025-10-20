@@ -2,6 +2,16 @@
 // ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
+// 🔤 Normalización que elimina tildes pero preserva la ñ
+function normalizar(texto) {
+  if (!texto) return '';
+  let t = String(texto).trim().toLowerCase();
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // elimina tildes
+  t = t.replace(/[¿?¡!,.]/g, ''); // elimina signos
+  t = t.replace(/\s+/g, ' '); // colapsa espacios
+  return t;
+}
+
 // 🎯 Captura de elementos del DOM
 const boton = document.getElementById('start');
 const texto = document.getElementById('texto');
@@ -19,34 +29,36 @@ reconocimiento.lang = 'es-ES'; // Idioma español
 
 // ▶️ Evento al hacer clic en el botón de inicio
 boton.addEventListener('click', () => {
-    activarMicrofono(); // Enciende indicador visual
-    if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
-    reconocimiento.start(); // Inicia el reconocimiento de voz
+  activarMicrofono(); // Enciende indicador visual
+  if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
+  reconocimiento.start(); // Inicia el reconocimiento de voz
 });
 
 // 🎧 Evento cuando se detecta voz
 reconocimiento.onresult = (event) => {
-    const speechText = normalizar(event.results[0][0].transcript); // Normaliza el texto
-    mostrarTextoReconocido(speechText); // Muestra el texto en pantalla
-    procesarTextoSecuencial(speechText); // Procesa el texto para mostrar señas
+  const speechText = normalizar(event.results[0][0].transcript); // Normaliza el texto
+  mostrarTextoReconocido(speechText); // Muestra el texto en pantalla
+  procesarTextoSecuencial(speechText); // Procesa el texto para mostrar señas
 };
 
 // 🛑 Evento cuando finaliza el reconocimiento
 reconocimiento.onend = () => {
-    desactivarMicrofono(); // Apaga indicador visual
-    if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
+  desactivarMicrofono(); // Apaga indicador visual
+  if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
 };
 
 // ⌨️ Evento al presionar Enter en el input de texto
 entradaTexto.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        event.preventDefault();
+  if (event.key === 'Enter') {
+    event.preventDefault();
 
-        // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
-        let userInput = normalizar(entradaTexto.value);
-        mostrarTextoReconocido(userInput);
-        procesarTextoSecuencial(userInput);
-    }
+    // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
+    let userInput = normalizar(entradaTexto.value);
+    mostrarTextoReconocido(userInput);
+    procesarTextoSecuencial(userInput);
+  }
+});
+
 
 // ==========================================================
 // ===============  Conjugaciones por verbo  =================
@@ -389,6 +401,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
