@@ -10,6 +10,8 @@ const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
 const startText = document.getElementById('startText'); // Texto del botón
 
+
+
 // Ocultar el video al cargar la página
 videoSeña.style.display = "none";
 
@@ -24,7 +26,7 @@ boton.addEventListener('click', () => {
 });
 
 reconocimiento.onresult = (event) => {
-    const speechText = event.results[0][0].transcript.toLowerCase();
+    const speechText = normalizar(event.results[0][0].transcript);
     mostrarTextoReconocido(speechText);
     procesarTextoSecuencial(speechText);
 };
@@ -39,9 +41,8 @@ entradaTexto.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
 
-        // ✅ Capturamos y normalizamos el texto (sin tildes, sin mayúsculas)
-        let userInput = entradaTexto.value.trim().toLowerCase();
-        userInput = userInput.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+        // ✅ Usamos la función "normalizar" que preserva la ñ y quita tildes
+        let userInput = normalizar(entradaTexto.value);
 
         mostrarTextoReconocido(userInput);
         procesarTextoSecuencial(userInput);
