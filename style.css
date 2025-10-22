@@ -106,13 +106,16 @@ button#start:hover {
 
 /* Video */
 .video-container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 30px;
 }
 
 #videoSeña {
-  max-width: 100%;   /* 🔹 Ahora es responsive */
-  height: auto;      /* 🔹 Mantiene proporción */
+  width: 100%;
+  max-width: 500px; /* 🔹 Limita tamaño en móviles */
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
@@ -163,19 +166,40 @@ footer {
     gap: 10px;
     padding: 10px;
   }
+
   h1 {
     font-size: 1.5rem;
     text-align: center;
   }
+
   .controls {
     flex-direction: column;
+    align-items: center;
   }
+
   #entradaTexto {
     width: 100%;
     max-width: 300px;
   }
-  #infoProyecto, #infoCultural {
+
+  #infoProyecto,
+  #infoCultural {
     margin: 15px;
     padding: 15px;
+  }
+
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #videoSeña {
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  .video-speed {
+    font-size: 0.9rem;
   }
 }
