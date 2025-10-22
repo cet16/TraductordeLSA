@@ -110,8 +110,8 @@ button#start:hover {
 
 #videoSeña {
   width: 100%;
-  max-width: 400px;
-  max-height: 300px;
+  max-width: 500px;     /* 🔹 tamaño por defecto más grande */
+  max-height: 375px;    /* 🔹 mantiene proporción 4:3 */
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
