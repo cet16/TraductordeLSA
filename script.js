@@ -31,6 +31,17 @@ const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
 const startText = document.getElementById('startText'); // Texto del botón
 
+// 🎛️ Control de tamaño del video
+const sizeControl = document.getElementById('sizeControl');
+const sizeValue = document.getElementById('sizeValue');
+
+sizeControl.addEventListener('input', () => {
+  const newSize = sizeControl.value;
+  sizeValue.textContent = `${newSize}px`;
+  videoSeña.style.maxWidth = `${newSize}px`;
+  videoSeña.style.maxHeight = `${Math.round(newSize * 0.75)}px`; // mantiene proporción
+});
+
 // 🎬 Ocultar el video al cargar la página
 videoSeña.style.display = "none";
 
@@ -66,7 +77,6 @@ entradaTexto.addEventListener('keypress', (event) => {
     mostrarTextoReconocido(userInput);
     procesarTextoSecuencial(userInput);
   }
-});
 
 
 // ==========================================================
@@ -411,6 +421,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
