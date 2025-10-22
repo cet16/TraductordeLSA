@@ -114,7 +114,8 @@ button#start:hover {
 
 #videoSeña {
   width: 100%;
-  max-width: 400px; /* 🔹 achicado desde 500px */
+  max-width: 400px;
+  max-height: 300px; /* 🔹 límite de altura agregado */
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -196,7 +197,8 @@ footer {
 
   #videoSeña {
     width: 85vw;
-    max-width: 320px; /* 🔹 más compacto en celulares */
+    max-width: 320px;
+    max-height: 250px; /* 🔹 más compacto en celulares */
   }
 
   .video-speed {
