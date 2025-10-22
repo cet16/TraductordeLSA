@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <div class="overlay"></div> <!-- 🔹 Overlay para mejorar contraste -->
+  <div class="overlay"></div>
 
   <header>
     <h1>Traductor de Voz y Texto a Lengua de Señas</h1>
@@ -31,10 +31,17 @@
         <source id="videoSource" src="" type="video/mp4">
         Tu navegador no soporta la reproducción de videos.
       </video>
+
       <div class="video-speed">
         <label for="speedControl">Velocidad: </label>
         <input type="range" id="speedControl" min="0.5" max="1.5" step="0.25" value="0.75" aria-label="Control de velocidad">
         <span id="speedValue">0.75x</span>
+      </div>
+
+      <div class="video-size">
+        <label for="sizeControl">Tamaño del video: </label>
+        <input type="range" id="sizeControl" min="200" max="600" step="20" value="400" aria-label="Control de tamaño">
+        <span id="sizeValue">400px</span>
       </div>
     </div>
 
