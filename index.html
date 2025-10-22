@@ -17,23 +17,23 @@
 
   <main>
     <div class="controls">
-      <button id="start">
+      <button id="start" aria-label="Activar reconocimiento de voz">
         <span class="mic-indicator"></span>
         <span id="startText">Hablar</span>
       </button>
-      <input type="text" id="entradaTexto" placeholder="Escribe una palabra aquí...">
+      <input type="text" id="entradaTexto" placeholder="Escribe una palabra aquí..." aria-label="Entrada de texto">
     </div>
 
     <p id="texto"></p>
 
     <div class="video-container">
-      <video id="videoSeña" controls>
+      <video id="videoSeña" controls role="video" aria-label="Video de seña">
         <source id="videoSource" src="" type="video/mp4">
         Tu navegador no soporta la reproducción de videos.
       </video>
       <div class="video-speed">
         <label for="speedControl">Velocidad: </label>
-        <input type="range" id="speedControl" min="0.5" max="1.5" step="0.25" value="0.75">
+        <input type="range" id="speedControl" min="0.5" max="1.5" step="0.25" value="0.75" aria-label="Control de velocidad">
         <span id="speedValue">0.75x</span>
       </div>
     </div>
@@ -60,6 +60,9 @@
       </p>
       <p>
         Respetar la cultura sorda significa valorar su identidad, tradiciones y la riqueza de su idioma visual.
+      </p>
+      <p>
+        Creemos que la tecnología puede ser una herramienta poderosa para derribar barreras comunicativas. Este traductor es solo el comienzo.
       </p>
     </section>
   </main>
