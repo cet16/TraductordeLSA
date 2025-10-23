@@ -38,6 +38,7 @@ const sizeValue = document.getElementById('sizeValue');
 sizeControl.addEventListener('input', () => {
   const newSize = sizeControl.value;
   sizeValue.textContent = `${newSize}px`;
+  videoSeña.style.display = "block"; // 🔹 Asegura que esté visible
   videoSeña.style.maxWidth = `${newSize}px`;
   videoSeña.style.maxHeight = `${Math.round(newSize * 0.75)}px`; // mantiene proporción
 });
@@ -421,6 +422,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
