@@ -77,7 +77,7 @@ entradaTexto.addEventListener('keypress', (event) => {
     mostrarTextoReconocido(userInput);
     procesarTextoSecuencial(userInput);
   }
-
+});
 
 // ==========================================================
 // ===============  Conjugaciones por verbo  =================
@@ -421,6 +421,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
