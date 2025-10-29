@@ -241,7 +241,7 @@ const palabrasFijas = {
   "barato": "Barato",
   "bombero": "Bomberobombera",
   "bombera": "Bomberobombera",
-  "buenos aires": "Buenosaires",
+  "buenos aires": "buenos aires",
   "camiseta": "Camiseta",
   "caro": "Caro",
   "catamarca": "Catamarca",
@@ -573,6 +573,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
