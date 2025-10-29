@@ -30,6 +30,7 @@ const videoSeña = document.getElementById('videoSeña');
 const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
 const startText = document.getElementById('startText'); // Texto del botón
+const reproducirBtn = document.getElementById('reproducirBtn'); // 🔹 Botón Reproducir
 
 // 🎛️ Control de tamaño del video
 const sizeControl = document.getElementById('sizeControl');
@@ -78,6 +79,13 @@ entradaTexto.addEventListener('keypress', (event) => {
     mostrarTextoReconocido(userInput);
     procesarTextoSecuencial(userInput);
   }
+});
+
+// ▶️ Evento al hacer clic en el botón "Reproducir"
+reproducirBtn.addEventListener('click', () => {
+  let userInput = normalizar(entradaTexto.value);
+  mostrarTextoReconocido(userInput);
+  procesarTextoSecuencial(userInput);
 });
 
 // ==========================================================
@@ -422,6 +430,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
