@@ -360,7 +360,7 @@ const palabrasFijas = {
   "viudo": "Viudoviuda",
   "viuda": "Viudoviuda",
   "zapato": "Zapato",
-  "zapatilla": "Zapatilla"
+  "zapatilla": "Zapatilla",
 
   
 
@@ -575,6 +575,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
