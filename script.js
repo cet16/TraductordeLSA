@@ -236,7 +236,7 @@ const palabrasFijas = {
   "admiracion": "Admiraradmiracion",
   "ahorro": "Ahorro",
   "america": "America",
-  "antartida": "Antártida",
+  "antartida": "Antartida",
   "argentina": "Argentina",
   "barato": "Barato",
   "bombero": "Bomberobombera",
@@ -271,7 +271,7 @@ const palabrasFijas = {
   "enfermero": "Enfermeroenfermera",
   "enfermera": "Enfermeroenfermera",
   "enseguida": "Enseguida",
-  "entre rios": "Entreríos",
+  "entre rios": "Entrerios",
   "esposo": "Esposoesposa",
   "esposa": "Esposoesposa",
   "europa": "Europa",
@@ -573,6 +573,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
