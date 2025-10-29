@@ -338,7 +338,7 @@ function procesarTextoSecuencial(text) {
         // Palabras sueltas exactas
         const archivosUnaPalabra = [
             "ayer","hoy","mañana","manana","futuro","pasado","ultimo","último",
-            "minuto","hora","mes","semana","domingo","lunes","martes",
+            "minuto","mes","semana","domingo","lunes","martes",
             "miercoles","miércoles","jueves","viernes","sabado","sábado",
             "mediodia","mediodía","todavia","todavía","siempre","rapido","rápido",
             "despacio","temprano","tarde","cerca","derecha","izquierda",
@@ -430,6 +430,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
