@@ -230,6 +230,7 @@ const palabrasFijas = {
 
   // Días y frases sociales
   "hola": "hola"
+};
 
 // ==========================================================
 // =========  Procesamiento secuencial (con frases) =========
@@ -425,6 +426,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
