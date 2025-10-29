@@ -233,7 +233,7 @@ const palabrasFijas = {
 
   "abuelo": "Abueloabuela",
   "abuela": "Abueloabuela",
-  "admiración": "Admiraradmiración",
+  "admiracion": "Admiraradmiracion",
   "ahorro": "Ahorro",
   "america": "America",
   "antartida": "Antártida",
@@ -573,6 +573,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
