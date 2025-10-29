@@ -208,7 +208,7 @@ const palabrasFijas = {
     "jueves": "Jueves",
     "viernes": "Viernes",
     "sabado": "Sabado",
-    "mediodía": "Mediodia",
+    "mediodia": "Mediodia",
     "todavía": "Todavia",
     "siempre": "Siempre",
     "rapido": "Rapido",
@@ -231,9 +231,6 @@ const palabrasFijas = {
     "no": "No",
     "si": "Si", "sí": "Si",
 
-    // ¡Ojo! Las frases multi-palabra se manejan abajo con includes(),
-    // pero igual ponemos aquí las formas de UNA palabra para que
-    // funcionen si vienen sueltas.
   "abuelo": "Abueloabuela",
   "abuela": "Abueloabuela",
   "admiración": "Admiraradmiración",
@@ -320,7 +317,7 @@ const palabrasFijas = {
   "ofensa": "Ofensa",
   "padrastro": "Padrastropadrastros",
   "padrastros": "Padrastropadrastros",
-  "papá": "Papapadrepadres",
+  "papa": "Papapadrepadres",
   "padre": "Papapadrepadres",
   "padres": "Papapadrepadres",
   "pareja": "Pareja",
@@ -329,7 +326,7 @@ const palabrasFijas = {
   "personalidad": "Personalidad",
   "personas": "Personasgente",
   "gente": "Personasgente",
-  "policía": "Policía",
+  "policia": "Policia",
   "politica": "Politica",
   "presidente": "Presidente",
   "primo": "Primoprima",
@@ -375,6 +372,11 @@ const palabrasFijas = {
   "viuda": "Viudoviuda",
   "zapato": "Zapato",
   "zapatilla": "Zapatilla"
+
+  
+    // ¡Ojo! Las frases multi-palabra se manejan abajo con includes(),
+    // pero igual ponemos aquí las formas de UNA palabra para que
+    // funcionen si vienen sueltas.
 };
 
 // ==========================================================
@@ -571,6 +573,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
