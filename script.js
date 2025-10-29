@@ -171,64 +171,69 @@ const conjugaciones = {
 // (incluye nuevas de la carpeta; se agregan variantes sin tilde)
 // ==========================================================
 const palabrasFijas = {
-  // Ya existentes
-  "lengua oral": "Lengua oral",
-  "si": "Si",
-  "sí": "Si",
-  "no": "No",
-  "negacion": "Negar",
-  "negar": "Negar",
-  "también": "Tambien",
-  "tambien": "Tambien",
-  "tampoco": "Tampoco",
-  "yo": "Yo",
-  "vos": "Vos",
-  "ustedes": "Ustedes",
-  "el": "El o Ella",
-  "ella": "El o Ella",
-  "nosotros": "Nosotros o Nosotras",
-  "nosotras": "Nosotros o Nosotras",
+    // Ya existentes
+    "lengua oral": "Lengua oral",
+    si: "Si", "sí": "Si",
+    no: "No",
+    negar: "Negar",
+  negacion: "Negar",
+    también: "Tambien", "tambien": "Tambien",
+    tampoco: "Tampoco",
+    yo: "Yo",
+    vos: "Vos",
+    ustedes: "Ustedes",
+    "el": "El o Ella",
+    "ella": "El o Ella",
+    "nosotros": "Nosotros o Nosotras",
+    "nosotras": "Nosotros o Nosotras",
 
-  // Tiempo / frecuencia
-  "ayer": "Ayer",
-  "hoy": "Hoy",
-  "mañana": "Mañana",
-  "año": "Año",
-  "año pasado": "Año pasado",
-  "futuro": "futuro",
-  "pasado": "Pasado",
-  "ultimo": "Ultimo",
-  "minuto": "minuto",
-  "hora": "Hora",
-  "mes": "Mes",
-  "semana": "Semana",
-  "domingo": "Domingo",
-  "lunes": "Lunes",
-  "martes": "Martes",
-  "miercoles": "Miercoles",
-  "jueves": "Jueves",
-  "viernes": "Viernes",
-  "sabado": "Sabado",
-  "mediodía": "Mediodia",
-  "todavía": "Todavia",
-  "siempre": "Siempre",
-  "rapido": "Rapido",
-  "despacio": "Despacio",
-  "temprano": "Temprano",
-  "tarde": "Tarde",
-  "hasta": "Hasta",
-  "internacional": "Internacional",
-  "administracion": "administracion",
+    // ===== Nuevas palabras/expresiones (según tu carpeta) =====
+    // Tiempo / frecuencia
+    "ayer": "Ayer",
+    "hoy": "Hoy",
+    "mañana": "Mañana",
+    "año": "Año",
+    "año pasado": "Año pasado",
+    "Futuro": "futuro",
+    "pasado": "Pasado",
+    "ultimo": "Ultimo",
+    "Minuto": "minuto",
+    "hora": "Hora",
+    "mes": "Mes",
+    "semana": "Semana",
+    "domingo": "Domingo",
+    "lunes": "Lunes",
+    "martes": "Martes",
+    "miercoles": "Miercoles",
+    "jueves": "Jueves",
+    "viernes": "Viernes",
+    "sabado": "Sabado",
+    "mediodía": "Mediodia",
+    "todavía": "Todavia",
+    "siempre": "Siempre",
+    "rapido": "Rapido",
+    "despacio": "Despacio",
+    "temprano": "Temprano",
+    "tarde": "Tarde",
+    "hasta": "Hasta",
+    "internacional": "Internacional",
+    "administracion": "administracion",
 
-  // Lugar / direcciones / cualidades
-  "cerca": "Cerca",
-  "derecha": "Derecha",
-  "izquierda": "Izquierda",
-  "importante": "Importante",
-  "limpio": "Limpio",
+    // Lugar / direcciones / cualidades
+    "cerca": "Cerca",
+    "derecha": "Derecha",
+    "izquierda": "Izquierda",
+    "importante": "Importante",
+    "limpio": "Limpio",
 
-  // Días y frases sociales
-  "hola": "hola"
+    // Días y frases sociales
+    "hola": "hola",
+    "no": "No",
+    "si": "Si", "sí": "Si",
+
+    // ¡Ojo! Las frases multi-palabra se manejan abajo con includes(),
+    // pero igual ponemos aquí las formas de UNA palabra para que
+    // funcionen si vienen sueltas.
 };
 
 // ==========================================================
@@ -333,7 +338,7 @@ function procesarTextoSecuencial(text) {
         // Palabras sueltas exactas
         const archivosUnaPalabra = [
             "ayer","hoy","mañana","manana","futuro","pasado","ultimo","último",
-            "minuto","mes","semana","domingo","lunes","martes",
+            "minuto","hora","mes","semana","domingo","lunes","martes",
             "miercoles","miércoles","jueves","viernes","sabado","sábado",
             "mediodia","mediodía","todavia","todavía","siempre","rapido","rápido",
             "despacio","temprano","tarde","cerca","derecha","izquierda",
@@ -425,14 +430,6 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
-
-
-
-
-
-
-
-
 
 
 
