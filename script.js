@@ -93,319 +93,316 @@ reproducirBtn.addEventListener('click', () => {
 // (mantenemos el mismo formato que ya usabas)
 // ==========================================================
 const conjugaciones = {
-    dialogar: [
-        "dialogar", "dialogo", "dialogás", "dialogas", "dialoga", "dialogamos", "dialogan",
-        "dialogué", "dialogaste", "dialogó", "dialogamos", "dialogaron",
-        "dialogaba", "dialogabas", "dialogábamos", "dialogaban",
-        "dialogaré", "dialogarás", "dialogará", "dialogaremos", "dialogarán",
-        "dialogaría", "dialogarías", "dialogaríamos", "dialogarían",
-        "dialogando", "dialogado", "he dialogado", "hemos dialogado", "han dialogado"
-    ],
-    hablar: [
-        "hablar", "hablo", "hablás", "hablas", "habla", "hablamos", "hablan",
-        "hablé", "hablaste", "habló", "hablamos", "hablaron",
-        "hablaba", "hablabas", "hablábamos", "hablaban",
-        "hablaré", "hablarás", "hablará", "hablaremos", "hablarán",
-        "hablaría", "hablarías", "hablaríamos", "hablarían",
-        "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
-    ],
-    decir: [
-        "decir", "digo", "decís", "dices", "dice", "decimos", "dicen",
-        "dije", "dijiste", "dijo", "dijimos", "dijeron",
-        "decía", "decías", "decíamos", "decían",
-        "diré", "dirás", "dirá", "diremos", "dirán",
-        "diría", "dirías", "diríamos", "dirían",
-        "diciendo", "dicho", "he dicho", "hemos dicho", "han dicho"
-    ],
-    contar: [
-        "contar", "cuento", "contás", "contas", "cuenta", "contamos", "cuentan",
-        "conté", "contaste", "contó", "contamos", "contaron",
-        "contaba", "contabas", "contábamos", "contaban",
-        "contaré", "contarás", "contará", "contaremos", "contarán",
-        "contaría", "contarías", "contaríamos", "contarían",
-        "contando", "contado", "he contado", "hemos contado", "han contado"
-    ],
-    narrar: [
-        "narrar", "narro", "narrás", "narras", "narra", "narramos", "narran",
-        "narré", "narraste", "narró", "narramos", "narraron",
-        "narraba", "narrabas", "narrábamos", "narraban",
-        "narraré", "narrarás", "narrará", "narraremos", "narrarán",
-        "narrando", "narrado", "he narrado", "hemos narrado", "han narrado"
-    ],
-    explicar: [
-        "explicar", "explico", "explicás", "explicas", "explica", "explicamos", "explican",
-        "expliqué", "explicaste", "explicó", "explicamos", "explicaron",
-        "explicaba", "explicabas", "explicábamos", "explicaban",
-        "explicaré", "explicarás", "explicará", "explicaremos", "explicarán",
-        "explicando", "explicado", "he explicado", "hemos explicado", "han explicado"
-    ],
-    estar: [
-        "estar", "estoy", "estás", "está", "estamos", "están",
-        "estuve", "estuviste", "estuvo", "estuvimos", "estuvieron",
-        "estaba", "estabas", "estábamos", "estaban",
-        "estaré", "estarás", "estará", "estaremos", "estarán",
-        "estando", "estado", "he estado", "hemos estado", "han estado"
-    ],
-
-
-    apurar: [
-        "apurar", "apuro", "apurás", "apuras", "apura", "apuramos", "apuran",
-        "apuré", "apuraste", "apuró", "apuramos", "apuraron",
-        "apuraba", "apurabas", "apurábamos", "apuraban",
-        "apuraré", "apurarás", "apurará", "apuraremos", "apurarán",
-        "apuraría", "apurarías", "apuraríamos", "apurarían",
-        "apurando", "apurado", "he apurado", "hemos apurado", "han apurado"
-    ],
-    llegar: [
-        "llegar", "llego", "llegás", "llegas", "llega", "llegamos", "llegan",
-        "llegué", "llegaste", "llegó", "llegamos", "llegaron",
-        "llegaba", "llegabas", "llegábamos", "llegaban",
-        "llegaré", "llegarás", "llegará", "llegaremos", "llegarán",
-        "llegaría", "llegarías", "llegaríamos", "llegarían",
-        "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
-    ],
-   ahorrar: [
-    "ahorrar", "ahorro", "ahorrás", "ahorras", "ahorra", "ahorramos", "ahorran",
-    "ahorré", "ahorraste", "ahorró", "ahorramos", "ahorraron",
-    "ahorraba", "ahorrabas", "ahorrábamos", "ahorraban",
-    "ahorraré", "ahorrarás", "ahorrará", "ahorraremos", "ahorrarán",
-    "ahorraría", "ahorrarías", "ahorraríamos", "ahorrarían",
-    "ahorrando", "ahorrado", "he ahorrado", "hemos ahorrado", "han ahorrado"
-  ],
-  amar: [
-    "amar", "amo", "amás", "amas", "ama", "amamos", "aman",
-    "amé", "amaste", "amó", "amamos", "amaron",
-    "amaba", "amabas", "amábamos", "amaban",
-    "amaré", "amarás", "amará", "amaremos", "amarán",
-    "amaría", "amarías", "amaríamos", "amarían",
-    "amando", "amado", "he amado", "hemos amado", "han amado"
-  ],
-  bailar: [
-    "bailar", "bailo", "bailás", "bailas", "baila", "bailamos", "bailan",
-    "bailé", "bailaste", "bailó", "bailamos", "bailaron",
-    "bailaba", "bailabas", "bailábamos", "bailaban",
-    "bailaré", "bailarás", "bailará", "bailaremos", "bailarán",
-    "bailaría", "bailarías", "bailaríamos", "bailarían",
-    "bailando", "bailado", "he bailado", "hemos bailado", "han bailado"
-  ],
-  cantar: [
-    "cantar", "canto", "cantás", "cantas", "canta", "cantamos", "cantan",
-    "canté", "cantaste", "cantó", "cantamos", "cantaron",
-    "cantaba", "cantabas", "cantábamos", "cantaban",
-    "cantaré", "cantarás", "cantará", "cantaremos", "cantarán",
-    "cantaría", "cantarías", "cantaríamos", "cantarían",
-    "cantando", "cantado", "he cantado", "hemos cantado", "han cantado"
-  ],
-  comprar: [
-    "comprar", "compro", "comprás", "compras", "compra", "compramos", "compran",
-    "compré", "compraste", "compró", "compramos", "compraron",
-    "compraba", "comprabas", "comprábamos", "compraban",
-    "compraré", "comprarás", "comprará", "compraremos", "comprarán",
-    "compraría", "comprarías", "compraríamos", "comprarían",
-    "comprando", "comprado", "he comprado", "hemos comprado", "han comprado"
-  ],
-  confiar: [
-    "confiar", "confío", "confiás", "confias", "confía", "confiamos", "confían",
-    "confié", "confiaste", "confió", "confiamos", "confiaron",
-    "confiaba", "confiabas", "confiábamos", "confiaban",
-    "confiaré", "confiarás", "confiará", "confiaremos", "confiarán",
-    "confiaría", "confiarías", "confiaríamos", "confiarían",
-    "confiando", "confiado", "he confiado", "hemos confiado", "han confiado"
-
+dialogar: [
+  "dialogar", "dialogo", "dialogas", "dialoga", "dialogamos", "dialogan",
+  "dialogue", "dialogaste", "dialogo", "dialogamos", "dialogaron",
+  "dialogaba", "dialogabas", "dialogabamos", "dialogaban",
+  "dialogare", "dialogaras", "dialogara", "dialogaremos", "dialogaran",
+  "dialogaria", "dialogarias", "dialogariamos", "dialogarian",
+  "dialogando", "dialogado", "he dialogado", "hemos dialogado", "han dialogado"
 ],
-  deber: [
-    "deber", "debo", "debés", "debes", "debe", "debemos", "deben",
-    "debí", "debiste", "debió", "debimos", "debieron",
-    "debía", "debías", "debíamos", "debían",
-    "deberé", "deberás", "deberá", "deberemos", "deberán",
-    "debería", "deberías", "deberíamos", "deberían",
-    "debiendo", "debido", "he debido", "hemos debido", "han debido"
+hablar: [
+  "hablar", "hablo", "hablas", "habla", "hablamos", "hablan",
+  "hable", "hablaste", "hablo", "hablamos", "hablaron",
+  "hablaba", "hablabas", "hablabamos", "hablaban",
+  "hablare", "hablaras", "hablara", "hablaremos", "hablaran",
+  "hablaria", "hablarias", "hablariamos", "hablarian",
+  "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
+],
+decir: [
+  "decir", "digo", "decis", "dices", "dice", "decimos", "dicen",
+  "dije", "dijiste", "dijo", "dijimos", "dijeron",
+  "decia", "decias", "deciamos", "decian",
+  "dire", "diras", "dira", "diremos", "diran",
+  "diria", "dirias", "diriamos", "dirian",
+  "diciendo", "dicho", "he dicho", "hemos dicho", "han dicho"
+],
+contar: [
+  "contar", "cuento", "contas", "conta", "contamos", "cuentan",
+  "conte", "contaste", "conto", "contamos", "contaron",
+  "contaba", "contabas", "contabamos", "contaban",
+  "contare", "contaras", "contara", "contaremos", "contaran",
+  "contaria", "contarias", "contariamos", "contarian",
+  "contando", "contado", "he contado", "hemos contado", "han contado"
+],
+narrar: [
+  "narrar", "narro", "narras", "narra", "narramos", "narran",
+  "narre", "narraste", "narro", "narramos", "narraron",
+  "narraba", "narrabas", "narrabamos", "narraban",
+  "narrare", "narraras", "narrara", "narraremos", "narraran",
+  "narraria", "narrarias", "narrariamos", "narrarian",
+  "narrando", "narrado", "he narrado", "hemos narrado", "han narrado"
+],
+explicar: [
+  "explicar", "explico", "explicas", "explica", "explicamos", "explican",
+  "explique", "explicaste", "explico", "explicamos", "explicaron",
+  "explicaba", "explicabas", "explicabamos", "explicaban",
+  "explicare", "explicaras", "explicara", "explicaremos", "explicaran",
+  "explicaria", "explicarias", "explicariamos", "explicarian",
+  "explicando", "explicado", "he explicado", "hemos explicado", "han explicado"
+],
+estar: [
+  "estar", "estoy", "estas", "esta", "estamos", "estan",
+  "estuve", "estuviste", "estuvo", "estuvimos", "estuvieron",
+  "estaba", "estabas", "estabamos", "estaban",
+  "estare", "estaras", "estara", "estaremos", "estaran",
+  "estando", "estado", "he estado", "hemos estado", "han estado"
+],
+apurar: [
+  "apurar", "apuro", "apuras", "apura", "apuramos", "apuran",
+  "apure", "apuraste", "apuro", "apuramos", "apuraron",
+  "apuraba", "apurabas", "apurabamos", "apuraban",
+  "apurare", "apuraras", "apurara", "apuraremos", "apuraran",
+  "apuraria", "apurarias", "apurariamos", "apurarían",
+  "apurando", "apurado", "he apurado", "hemos apurado", "han apurado"
+],
+llegar: [
+  "llegar", "llego", "llegas", "llega", "llegamos", "llegan",
+  "llegue", "llegaste", "llego", "llegamos", "llegaron",
+  "llegaba", "llegabas", "llegabamos", "llegaban",
+  "llegare", "llegaras", "llegara", "llegaremos", "llegaran",
+  "llegaria", "llegarias", "llegariamos", "llegarian",
+  "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
+],
+ahorrar: [
+  "ahorrar", "ahorro", "ahorras", "ahorra", "ahorramos", "ahorran",
+  "ahorre", "ahorraste", "ahorro", "ahorramos", "ahorraron",
+  "ahorraba", "ahorrabas", "ahorrabamos", "ahorraban",
+  "ahorrare", "ahorraras", "ahorrara", "ahorraremos", "ahorraran",
+  "ahorraria", "ahorrarias", "ahorrariamos", "ahorrarian",
+  "ahorrando", "ahorrado", "he ahorrado", "hemos ahorrado", "han ahorrado"
+],
+amar: [
+  "amar", "amo", "amas", "ama", "amamos", "aman",
+  "ame", "amaste", "amo", "amamos", "amaron",
+  "amaba", "amabas", "amabamos", "amaban",
+  "amare", "amaras", "amara", "amaremos", "amaran",
+  "amaria", "amarias", "amariamos", "amarian",
+  "amando", "amado", "he amado", "hemos amado", "han amado"
+],
+bailar: [
+  "bailar", "bailo", "bailas", "baila", "bailamos", "bailan",
+  "baile", "bailaste", "bailo", "bailamos", "bailaron",
+  "bailaba", "bailabas", "bailabamos", "bailaban",
+  "bailare", "bailaras", "bailara", "bailaremos", "bailaran",
+  "bailaria", "bailarias", "bailariamos", "bailarian",
+  "bailando", "bailado", "he bailado", "hemos bailado", "han bailado"
   ],
-  desconfiar: [
-    "desconfiar", "desconfío", "desconfiás", "desconfias", "desconfía", "desconfiamos", "desconfían",
-    "desconfié", "desconfiaste", "desconfió", "desconfiamos", "desconfiaron",
-    "desconfiaba", "desconfiabas", "desconfiábamos", "desconfiaban",
-    "desconfiaré", "desconfiarás", "desconfiará", "desconfiaremos", "desconfiarán",
-    "desconfiaría", "desconfiarías", "desconfiaríamos", "desconfiarían",
-    "desconfiando", "desconfiado", "he desconfiado", "hemos desconfiado", "han desconfiado"
-  ],
-  desear: [
-    "desear", "deseo", "deseás", "deseas", "desea", "deseamos", "desean",
-    "deseé", "deseaste", "deseó", "deseamos", "desearon",
-    "deseaba", "deseabas", "deseábamos", "deseaban",
-    "desearé", "desearás", "deseará", "desearemos", "desearán",
-    "desearía", "desearías", "desearíamos", "desearían",
-    "deseando", "deseado", "he deseado", "hemos deseado", "han deseado"
-  ],
-  dibujar: [
-    "dibujar", "dibujo", "dibujás", "dibujas", "dibuja", "dibujamos", "dibujan",
-    "dibujé", "dibujaste", "dibujó", "dibujamos", "dibujaron",
-    "dibujaba", "dibujabas", "dibujábamos", "dibujaban",
-    "dibujaré", "dibujarás", "dibujará", "dibujaremos", "dibujarán",
-    "dibujaría", "dibujarías", "dibujaríamos", "dibujarían",
-    "dibujando", "dibujado", "he dibujado", "hemos dibujado", "han dibujado"
-  ],
-  echar: [
-    "echar", "echo", "echás", "echas", "echa", "echamos", "echan",
-    "eché", "echaste", "echó", "echamos", "echaron",
-    "echaba", "echabas", "echábamos", "echaban",
-    "echaré", "echarás", "echará", "echaremos", "echarán",
-    "echaría", "echarías", "echaríamos", "echarían",
-    "echando", "echado", "he echado", "hemos echado", "han echado"
-  ],
-  estafar: [
-    "estafar", "estafo", "estafás", "estafas", "estafa", "estafamos", "estafan",
-    "estafé", "estafaste", "estafó", "estafamos", "estafaron",
-    "estafaba", "estafabas", "estafábamos", "estafaban",
-    "estafaré", "estafarás", "estafará", "estafaremos", "estafarán",
-    "estafaría", "estafarías", "estafaríamos", "estafarían",
-    "estafando", "estafado", "he estafado", "hemos estafado", "han estafado"
-  ],
-
-  ganar: [
-    "ganar", "gano", "ganás", "ganas", "gana", "ganamos", "ganan",
-    "gané", "ganaste", "ganó", "ganamos", "ganaron",
-    "ganaba", "ganabas", "ganábamos", "ganaban",
-    "ganaré", "ganarás", "ganará", "ganaremos", "ganarán",
-    "ganaría", "ganarías", "ganaríamos", "ganarían",
-    "ganando", "ganado", "he ganado", "hemos ganado", "han ganado"
-  ],
-  hablar: [
-    "hablar", "hablo", "hablás", "hablas", "habla", "hablamos", "hablan",
-    "hablé", "hablaste", "habló", "hablamos", "hablaron",
-    "hablaba", "hablabas", "hablábamos", "hablaban",
-    "hablaré", "hablarás", "hablará", "hablaremos", "hablarán",
-    "hablaría", "hablarías", "hablaríamos", "hablarían",
-    "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
-  ],
-  jugar: [
-    "jugar", "juego", "jugás", "jugas", "juega", "jugamos", "juegan",
-    "jugué", "jugaste", "jugó", "jugamos", "jugaron",
-    "jugaba", "jugabas", "jugábamos", "jugaban",
-    "jugaré", "jugarás", "jugará", "jugaremos", "jugarán",
-    "jugaría", "jugarías", "jugaríamos", "jugarían",
-    "jugando", "jugado", "he jugado", "hemos jugado", "han jugado"
-  ],
-  llegar: [
-    "llegar", "llego", "llegás", "llegas", "llega", "llegamos", "llegan",
-    "llegué", "llegaste", "llegó", "llegamos", "llegaron",
-    "llegaba", "llegabas", "llegábamos", "llegaban",
-    "llegaré", "llegarás", "llegará", "llegaremos", "llegarán",
-    "llegaría", "llegarías", "llegaríamos", "llegarían",
-    "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
-  ],
-  negar: [
-    "negar", "niego", "negás", "negas", "niega", "negamos", "niegan",
-    "negué", "negaste", "negó", "negamos", "negaron",
-    "negaba", "negabas", "negábamos", "negaban",
-    "negaré", "negarás", "negará", "negaremos", "negarán",
-    "negaría", "negarías", "negaríamos", "negarían",
-    "negando", "negado", "he negado", "hemos negado", "han negado"
-  ],
-  negociar: [
-    "negociar", "negocio", "negociás", "negocias", "negocia", "negociamos", "negocian",
-    "negocié", "negociaste", "negoció", "negociamos", "negociaron",
-    "negociaba", "negociabas", "negociábamos", "negociaban",
-    "negociaré", "negociarás", "negociará", "negociaremos", "negociarán",
-    "negociaría", "negociarías", "negociaríamos", "negociarían",
-    "negociando", "negociado", "he negociado", "hemos negociado", "han negociado"
-  ],
-  odiar: [
-    "odiar", "odio", "odiás", "odias", "odia", "odiamos", "odian",
-    "odié", "odiaste", "odió", "odiamos", "odiaron",
-    "odiaba", "odiabas", "odiábamos", "odiaban",
-    "odiaré", "odiarás", "odiará", "odiaremos", "odiarán",
-    "odiaría", "odiarías", "odiaríamos", "odiarían",
-    "odiando", "odiado", "he odiado", "hemos odiado", "han odiado"
-  ],
-  ofender: [
-    "ofender", "ofendo", "ofendés", "ofendes", "ofende", "ofendemos", "ofenden",
-    "ofendí", "ofendiste", "ofendió", "ofendimos", "ofendieron",
-    "ofendía", "ofendías", "ofendíamos", "ofendían",
-    "ofenderé", "ofenderás", "ofenderá", "ofenderemos", "ofenderán",
-    "ofendería", "ofenderías", "ofenderíamos", "ofenderían",
-    "ofendiendo", "ofendido", "he ofendido", "hemos ofendido", "han ofendido"
-  ],
-  pagar: [
-    "pagar", "pago", "pagás", "pagas", "paga", "pagamos", "pagan",
-    "pagué", "pagaste", "pagó", "pagamos", "pagaron",
-    "pagaba", "pagabas", "pagábamos", "pagaban",
-    "pagaré", "pagarás", "pagará", "pagaremos", "pagarán",
-    "pagaría", "pagarías", "pagaríamos", "pagarían",
-    "pagando", "pagado", "he pagado", "hemos pagado", "han pagado"
-  ],
-  practicar: [
-    "practicar", "practico", "practicás", "practicas", "practica", "practicamos", "practican",
-    "practiqué", "practicaste", "practicó", "practicamos", "practicaron",
-    "practicaba", "practicabas", "practicábamos", "practicaban",
-    "practicaré", "practicarás", "practicará", "practicaremos", "practicarán",
-    "practicaría", "practicarías", "practicaríamos", "practicarían",
-    "practicando", "practicado", "he practicado", "hemos practicado", "han practicado"
-  ],
-  querer: [
-    "querer", "quiero", "querés", "quieres", "quiere", "queremos", "quieren",
-    "quise", "quisiste", "quiso", "quisimos", "quisieron",
-    "quería", "querías", "queríamos", "querían",
-    "querré", "querrás", "querrá", "querremos", "querrán",
-    "querría", "querrías", "querríamos", "querrían",
-    "queriendo", "querido", "he querido", "hemos querido", "han querido"
-  ],
-  renunciar: [
-    "renunciar", "renuncio", "renunciás", "renuncias", "renuncia", "renunciamos", "renuncian",
-    "renuncié", "renunciaste", "renunció", "renunciamos", "renunciaron",
-    "renunciaba", "renunciabas", "renunciábamos", "renunciaban",
-    "renunciaré", "renunciarás", "renunciará", "renunciaremos", "renunciarán",
-    "renunciaría", "renunciarías", "renunciaríamos", "renunciarían",
-    "renunciando", "renunciado", "he renunciado", "hemos renunciado", "han renunciado"
-  ],
-  trabajar: [
-    "trabajar", "trabajo", "trabajás", "trabajas", "trabaja", "trabajamos", "trabajan",
-    "trabajé", "trabajaste", "trabajó", "trabajamos", "trabajaron",
-    "trabajaba", "trabajabas", "trabajábamos", "trabajaban",
-    "trabajaré", "trabajarás", "trabajará", "trabajaremos", "trabajarán",
-    "trabajaría", "trabajarías", "trabajaríamos", "trabajarían",
-    "trabajando", "trabajado", "he trabajado", "hemos trabajado", "han trabajado"
-  ],
-  vender: [
-    "vender", "vendo", "vendés", "vendes", "vende", "vendemos", "venden",
-    "vendí", "vendiste", "vendió", "vendimos", "vendieron",
-    "vendía", "vendías", "vendíamos", "vendían",
-    "venderé", "venderás", "venderá", "venderemos", "venderán",
-    "vendería", "venderías", "venderíamos", "venderían",
-    "vendiendo", "vendido", "he vendido", "hemos vendido", "han vendido"
-  ],
-  vestir: [
-    "vestir", "visto", "vestís", "vestis", "viste", "vestimos", "visten",
-    "vestí", "vestiste", "vistió", "vestimos", "vistieron",
-    "vestía", "vestías", "vestíamos", "vestían",
-    "vestiré", "vestirás", "vestirá", "vestiremos", "vestirán",
-    "vestiría", "vestirías", "vestiríamos", "vestirían",
-    "vistiendo", "vestido", "he vestido", "hemos vestido", "han vestido"
-  ],
-  administrar: [
-    "administrar", "administro", "administrás", "administras", "administra", "administramos", "administran",
-    "administré", "administraste", "administró", "administramos", "administraron",
-    "administraba", "administrabas", "administrábamos", "administraban",
-    "administraré", "administrarás", "administrará", "administraremos", "administrarán",
-    "administraría", "administrarías", "administraríamos", "administrarían",
-    "administrando", "administrado", "he administrado", "hemos administrado", "han administrado"
-  ],
-  admirar: [
-    "admirar", "admiro", "admirás", "admiras", "admira", "admiramos", "admiran",
-    "admiré", "admiraste", "admiró", "admiramos", "admiraron",
-    "admiraba", "admirabas", "admirábamos", "admiraban",
-    "admiraré", "admirarás", "admirará", "admiraremos", "admirarán",
-    "admiraría", "admirarías", "admiraríamos", "admirarían",
-    "admirando", "admirado", "he admirado", "hemos admirado", "han admirado"
-  ],
-  sentir: [
-    "sentir", "siento", "sentís", "sentis", "siente", "sentimos", "sienten",
-    "sentí", "sentiste", "sintió", "sentimos", "sintieron",
-    "sentía", "sentías", "sentíamos", "sentían",
-    "sentiré", "sentirás", "sentirá", "sentiremos", "sentirán",
-    "sentiría", "sentirías", "sentiríamos", "sentirían",
-    "sintiendo", "sentido", "he sentido", "hemos sentido", "han sentido"
-  ]
+cantar: [
+  "cantar", "canto", "cantas", "canta", "cantamos", "cantan",
+  "cante", "cantaste", "canto", "cantaron",
+  "cantaba", "cantabas", "cantaban",
+  "cantare", "cantaras", "cantara", "cantaremos", "cantaran",
+  "cantaria", "cantarias", "cantariamos", "cantarian",
+  "cantando", "cantado", "he cantado", "hemos cantado", "han cantado"
+],
+comprar: [
+  "comprar", "compro", "compras", "compra", "compramos", "compran",
+  "compre", "compraste", "compro", "compraron",
+  "compraba", "comprabas", "compraban",
+  "comprare", "compraras", "comprara", "compraremos", "compraran",
+  "compraria", "comprarias", "comprariamos", "comprarian",
+  "comprando", "comprado", "he comprado", "hemos comprado", "han comprado"
+],
+confiar: [
+  "confiar", "confio", "confias", "confia", "confiamos", "confian",
+  "confie", "confiaste", "confio", "confiaron",
+  "confiaba", "confiabas", "confiaban",
+  "confiare", "confiaras", "confiara", "confiaremos", "confiaran",
+  "confiaria", "confiarias", "confiariamos", "confiarian",
+  "confiando", "confiado", "he confiado", "hemos confiado", "han confiado"
+],
+deber: [
+  "deber", "debo", "debes", "debe", "debemos", "deben",
+  "debi", "debiste", "debio", "debimos", "debieron",
+  "debia", "debias", "debian",
+  "debere", "deberas", "debera", "deberemos", "deberan",
+  "deberia", "deberias", "deberiamos", "deberian",
+  "debiendo", "debido", "he debido", "hemos debido", "han debido"
+],
+desconfiar: [
+  "desconfiar", "desconfio", "desconfias", "desconfia", "desconfiamos", "desconfian",
+  "desconfie", "desconfiaste", "desconfio", "desconfiaron",
+  "desconfiaba", "desconfiabas", "desconfiaban",
+  "desconfiare", "desconfiaras", "desconfiara", "desconfiaremos", "desconfiaran",
+  "desconfiaria", "desconfiarias", "desconfiariamos", "desconfiarian",
+  "desconfiando", "desconfiado", "he desconfiado", "hemos desconfiado", "han desconfiado"
+],
+desear: [
+  "desear", "deseo", "deseas", "desea", "deseamos", "desean",
+  "desee", "deseaste", "deseo", "desearon",
+  "deseaba", "deseabas", "deseaban",
+  "deseara", "deseare", "desearas", "desearemos", "desearan",
+  "desearia", "desearias", "deseariamos", "desearian",
+  "deseando", "deseado", "he deseado", "hemos deseado", "han deseado"
+],
+dibujar: [
+  "dibujar", "dibujo", "dibujas", "dibuja", "dibujamos", "dibujan",
+  "dibuje", "dibujaste", "dibujaron",
+  "dibujaba", "dibujabas", "dibujaban",
+  "dibujare", "dibujaras", "dibujara", "dibujaremos", "dibujaran",
+  "dibujaria", "dibujarias", "dibujariamos", "dibujarian",
+  "dibujando", "dibujado", "he dibujado", "hemos dibujado", "han dibujado"
+],
+echar: [
+  "echar", "echo", "echas", "echa", "echamos", "echan",
+  "eche", "echaste", "echaron",
+  "echaba", "echabas", "echaban",
+  "echare", "echaras", "echara", "echaremos", "echaran",
+  "echando", "echado", "he echado", "hemos echado", "han echado"
+],
+estafar: [
+  "estafar", "estafo", "estafas", "estafa", "estafamos", "estafan",
+  "estafe", "estafaste", "estafaron",
+  "estafaba", "estafabas", "estafaban",
+  "estafare", "estafaras", "estafara", "estafaremos", "estafaran",
+  "estafaria", "estafarias", "estafariamos", "estafarian",
+  "estafando", "estafado", "he estafado", "hemos estafado", "han estafado"
+],
+ganar: [
+  "ganar", "gano", "ganas", "gana", "ganamos", "ganan",
+  "gane", "ganaste", "ganaron",
+  "ganaba", "ganabas", "ganaban",
+  "ganare", "ganaras", "ganara", "ganaremos", "ganaran",
+  "ganaria", "ganarias", "ganariamos", "ganarian",
+  "ganando", "ganado", "he ganado", "hemos ganado", "han ganado"
+],
+hablar: [
+  "hablar", "hablo", "hablas", "habla", "hablamos", "hablan",
+  "hable", "hablaste", "hablaron",
+  "hablaba", "hablabas", "hablaban",
+  "hablare", "hablaras", "hablara", "hablaremos", "hablaran",
+  "hablaria", "hablarias", "hablariamos", "hablarian",
+  "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
+],
+jugar: [
+  "jugar", "juego", "jugas", "juega", "jugamos", "juegan",
+  "jugue", "jugaste", "jugaron",
+  "jugaba", "jugabas", "jugaban",
+  "jugare", "jugaras", "jugara", "jugaremos", "jugaran",
+  "jugaria", "jugarias", "jugariamos", "jugarian",
+  "jugando", "jugado", "he jugado", "hemos jugado", "han jugado"
+],
+llegar: [
+  "llegar", "llego", "llegas", "llega", "llegamos", "llegan",
+  "llegue", "llegaste", "llegaron",
+  "llegaba", "llegabas", "llegaban",
+  "llegare", "llegaras", "llegara", "llegaremos", "llegaran",
+  "llegaria", "llegarias", "llegariamos", "llegarian",
+  "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
+],
+negar: [
+  "negar", "niego", "negas", "niega", "negamos", "niegan",
+  "negue", "negaste", "negaron",
+  "negaba", "negabas", "negaban",
+  "negare", "negaras", "negara", "negaremos", "negaran",
+  "negaria", "negarias", "negariamos", "negarian",
+  "negando", "negado", "he negado", "hemos negado", "han negado"
+],
+negociar: [
+  "negociar", "negocio", "negocias", "negocia", "negociamos", "negocian",
+  "negocie", "negociaste", "negociaron",
+  "negociaba", "negociabas", "negociaban",
+  "negociare", "negociaras", "negociara", "negociaremos", "negociaran",
+  "negociaria", "negociarias", "negociariamos", "negociarian",
+  "negociando", "negociado", "he negociado", "hemos negociado", "han negociado"
+],
+odiar: [
+  "odiar", "odio", "odias", "odia", "odiamos", "odian",
+  "odie", "odiaste", "odiaron",
+  "odiaba", "odiabas", "odiaban",
+  "odiare", "odiaras", "odiara", "odiaremos", "odiaran",
+  "odiaria", "odiarias", "odiariamos", "odiarian",
+  "odiando", "odiado", "he odiado", "hemos odiado", "han odiado"
+],
+ofender: [
+  "ofender", "ofendo", "ofendes", "ofende", "ofendemos", "ofenden",
+  "ofendi", "ofendiste", "ofendio", "ofendimos", "ofendieron",
+  "ofendia", "ofendias", "ofendian",
+  "ofendere", "ofenderas", "ofendera", "ofenderemos", "ofenderan",
+  "ofenderia", "ofenderias", "ofenderiamos", "ofenderian",
+  "ofendiendo", "ofendido", "he ofendido", "hemos ofendido", "han ofendido"
+],
+pagar: [
+  "pagar", "pago", "pagas", "paga", "pagamos", "pagan",
+  "pague", "pagaste", "pagaron",
+  "pagaba", "pagabas", "pagaban",
+  "pagare", "pagaras", "pagara", "pagaremos", "pagaran",
+  "pagaria", "pagarias", "pagariamos", "pagarian",
+  "pagando", "pagado", "he pagado", "hemos pagado", "han pagado"
+],
+practicar: [
+  "practicar", "practico", "practicas", "practica", "practicamos", "practican",
+  "practique", "practicaste", "practicaron",
+  "practicaba", "practicabas", "practicaban",
+  "practicare", "practicaras", "practicara", "practicaremos", "practicaran",
+  "practicaria", "practicarias", "practicariamos", "practicarian",
+  "practicando", "practicado", "he practicado", "hemos practicado", "han practicado"
+],
+querer: [
+  "querer", "quiero", "quieres", "quiere", "queremos", "quieren",
+  "quise", "quisiste", "quiso", "quisimos", "quisieron",
+  "queria", "querias", "querian",
+  "querre", "querras", "querra", "querremos", "querran",
+  "querria", "querrias", "querriamos", "querrian",
+  "queriendo", "querido", "he querido", "hemos querido", "han querido"
+],
+renunciar: [
+  "renunciar", "renuncio", "renuncias", "renuncia", "renunciamos", "renuncian",
+  "renuncie", "renunciaste", "renunciaron",
+  "renunciaba", "renunciabas", "renunciaban",
+  "renunciare", "renunciaras", "renunciara", "renunciaremos", "renunciaran",
+  "renunciaria", "renunciarias", "renunciariamos", "renunciarian",
+  "renunciando", "renunciado", "he renunciado", "hemos renunciado", "han renunciado"
+],
+trabajar: [
+  "trabajar", "trabajo", "trabajas", "trabaja", "trabajamos", "trabajan",
+  "trabaje", "trabajaste", "trabajaron",
+  "trabajaba", "trabajabas", "trabajaban",
+  "trabajare", "trabajaras", "trabajara", "trabajaremos", "trabajaran",
+  "trabajaria", "trabajarias", "trabajariamos", "trabajarian",
+  "trabajando", "trabajado", "he trabajado", "hemos trabajado", "han trabajado"
+],
+vender: [
+  "vender", "vendo", "vendes", "vende", "vendemos", "venden",
+  "vendi", "vendiste", "vendio", "vendimos", "vendieron",
+  "vendia", "vendias", "vendian",
+  "vendere", "venderas", "vendera", "venderemos", "venderan",
+  "venderia", "venderias", "venderiamos", "venderian",
+  "vendiendo", "vendido", "he vendido", "hemos vendido", "han vendido"
+],
+vestir: [
+  "vestir", "visto", "vestis", "viste", "vestimos", "visten",
+  "vesti", "vestiste", "vistio", "vistieron",
+  "vestia", "vestias", "vestian",
+  "vestire", "vestiras", "vestira", "vestiremos", "vestiran",
+  "vestiria", "vestirias", "vestiriamos", "vestirian",
+  "vistiendo", "vestido", "he vestido", "hemos vestido", "han vestido"
+],
+administrar: [
+  "administrar", "administro", "administras", "administra", "administramos", "administran",
+  "administre", "administraste", "administraron",
+  "administraba", "administrabas", "administraban",
+  "administrare", "administraras", "administrara", "administraremos", "administraran",
+  "administraria", "administrarias", "administrariamos", "administrarian",
+  "administrando", "administrado", "he administrado", "hemos administrado", "han administrado"
+],
+admirar: [
+  "admirar", "admiro", "admiras", "admira", "admiramos", "admiran",
+  "admire", "admiraste", "admiraron",
+  "admiraba", "admirabas", "admiraban",
+  "admirare", "admiraras", "admirara", "admiraremos", "admiraran",
+  "admiraria", "admirarias", "admirariamos", "admirarian",
+  "admirando", "admirado", "he admirado", "hemos admirado", "han admirado"
+],
+sentir: [
+  "sentir", "siento", "sentis", "siente", "sentimos", "sienten",
+  "senti", "sentiste", "sintio", "sintieron",
+  "sentia", "sentias", "sentian",
+  "sentire", "sentiras", "sentira", "sentiremos", "sentiran",
+  "sentiria", "sentirias", "sentiriamos", "sentirian",
+  "sintiendo", "sentido", "he sentido", "hemos sentido", "han sentido"
+]
 };
 
 // ==========================================================
@@ -815,6 +812,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
