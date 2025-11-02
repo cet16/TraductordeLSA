@@ -260,7 +260,7 @@ const conjugaciones = {
     "estafaré", "estafarás", "estafará", "estafaremos", "estafarán",
     "estafaría", "estafarías", "estafaríamos", "estafarían",
     "estafando", "estafado", "he estafado", "hemos estafado", "han estafado"
-  
+  ],
 
 };
 
@@ -671,6 +671,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
