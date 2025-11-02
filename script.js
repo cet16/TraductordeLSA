@@ -262,6 +262,134 @@ const conjugaciones = {
     "estafando", "estafado", "he estafado", "hemos estafado", "han estafado"
   ],
 
+  ganar: [
+    "ganar", "gano", "ganás", "ganas", "gana", "ganamos", "ganan",
+    "gané", "ganaste", "ganó", "ganamos", "ganaron",
+    "ganaba", "ganabas", "ganábamos", "ganaban",
+    "ganaré", "ganarás", "ganará", "ganaremos", "ganarán",
+    "ganaría", "ganarías", "ganaríamos", "ganarían",
+    "ganando", "ganado", "he ganado", "hemos ganado", "han ganado"
+  ],
+  hablar: [
+    "hablar", "hablo", "hablás", "hablas", "habla", "hablamos", "hablan",
+    "hablé", "hablaste", "habló", "hablamos", "hablaron",
+    "hablaba", "hablabas", "hablábamos", "hablaban",
+    "hablaré", "hablarás", "hablará", "hablaremos", "hablarán",
+    "hablaría", "hablarías", "hablaríamos", "hablarían",
+    "hablando", "hablado", "he hablado", "hemos hablado", "han hablado"
+  ],
+  jugar: [
+    "jugar", "juego", "jugás", "jugas", "juega", "jugamos", "juegan",
+    "jugué", "jugaste", "jugó", "jugamos", "jugaron",
+    "jugaba", "jugabas", "jugábamos", "jugaban",
+    "jugaré", "jugarás", "jugará", "jugaremos", "jugarán",
+    "jugaría", "jugarías", "jugaríamos", "jugarían",
+    "jugando", "jugado", "he jugado", "hemos jugado", "han jugado"
+  ],
+  llegar: [
+    "llegar", "llego", "llegás", "llegas", "llega", "llegamos", "llegan",
+    "llegué", "llegaste", "llegó", "llegamos", "llegaron",
+    "llegaba", "llegabas", "llegábamos", "llegaban",
+    "llegaré", "llegarás", "llegará", "llegaremos", "llegarán",
+    "llegaría", "llegarías", "llegaríamos", "llegarían",
+    "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
+  ],
+  negar: [
+    "negar", "niego", "negás", "negas", "niega", "negamos", "niegan",
+    "negué", "negaste", "negó", "negamos", "negaron",
+    "negaba", "negabas", "negábamos", "negaban",
+    "negaré", "negarás", "negará", "negaremos", "negarán",
+    "negaría", "negarías", "negaríamos", "negarían",
+    "negando", "negado", "he negado", "hemos negado", "han negado"
+  ],
+  negociar: [
+    "negociar", "negocio", "negociás", "negocias", "negocia", "negociamos", "negocian",
+    "negocié", "negociaste", "negoció", "negociamos", "negociaron",
+    "negociaba", "negociabas", "negociábamos", "negociaban",
+    "negociaré", "negociarás", "negociará", "negociaremos", "negociarán",
+    "negociaría", "negociarías", "negociaríamos", "negociarían",
+    "negociando", "negociado", "he negociado", "hemos negociado", "han negociado"
+  ],
+  odiar: [
+    "odiar", "odio", "odiás", "odias", "odia", "odiamos", "odian",
+    "odié", "odiaste", "odió", "odiamos", "odiaron",
+    "odiaba", "odiabas", "odiábamos", "odiaban",
+    "odiaré", "odiarás", "odiará", "odiaremos", "odiarán",
+    "odiaría", "odiarías", "odiaríamos", "odiarían",
+    "odiando", "odiado", "he odiado", "hemos odiado", "han odiado"
+  ],
+  ofender: [
+    "ofender", "ofendo", "ofendés", "ofendes", "ofende", "ofendemos", "ofenden",
+    "ofendí", "ofendiste", "ofendió", "ofendimos", "ofendieron",
+    "ofendía", "ofendías", "ofendíamos", "ofendían",
+    "ofenderé", "ofenderás", "ofenderá", "ofenderemos", "ofenderán",
+    "ofendería", "ofenderías", "ofenderíamos", "ofenderían",
+    "ofendiendo", "ofendido", "he ofendido", "hemos ofendido", "han ofendido"
+  ],
+  pagar: [
+    "pagar", "pago", "pagás", "pagas", "paga", "pagamos", "pagan",
+    "pagué", "pagaste", "pagó", "pagamos", "pagaron",
+    "pagaba", "pagabas", "pagábamos", "pagaban",
+    "pagaré", "pagarás", "pagará", "pagaremos", "pagarán",
+    "pagaría", "pagarías", "pagaríamos", "pagarían",
+    "pagando", "pagado", "he pagado", "hemos pagado", "han pagado"
+  ],
+  practicar: [
+    "practicar", "practico", "practicás", "practicas", "practica", "practicamos", "practican",
+    "practiqué", "practicaste", "practicó", "practicamos", "practicaron",
+    "practicaba", "practicabas", "practicábamos", "practicaban",
+    "practicaré", "practicarás", "practicará", "practicaremos", "practicarán",
+    "practicaría", "practicarías", "practicaríamos", "practicarían",
+    "practicando", "practicado", "he practicado", "hemos practicado", "han practicado"
+  ],
+  querer: [
+    "querer", "quiero", "querés", "quieres", "quiere", "queremos", "quieren",
+    "quise", "quisiste", "quiso", "quisimos", "quisieron",
+    "quería", "querías", "queríamos", "querían",
+    "querré", "querrás", "querrá", "querremos", "querrán",
+    "querría", "querrías", "querríamos", "querrían",
+    "queriendo", "querido", "he querido", "hemos querido", "han querido"
+  ],
+  renunciar: [
+    "renunciar", "renuncio", "renunciás", "renuncias", "renuncia", "renunciamos", "renuncian",
+    "renuncié", "renunciaste", "renunció", "renunciamos", "renunciaron",
+    "renunciaba", "renunciabas", "renunciábamos", "renunciaban",
+    "renunciaré", "renunciarás", "renunciará", "renunciaremos", "renunciarán",
+    "renunciaría", "renunciarías", "renunciaríamos", "renunciarían",
+    "renunciando", "renunciado", "he renunciado", "hemos renunciado", "han renunciado"
+  ],
+  trabajar: [
+    "trabajar", "trabajo", "trabajás", "trabajas", "trabaja", "trabajamos", "trabajan",
+    "trabajé", "trabajaste", "trabajó", "trabajamos", "trabajaron",
+    "trabajaba", "trabajabas", "trabajábamos", "trabajaban",
+    "trabajaré", "trabajarás", "trabajará", "trabajaremos", "trabajarán",
+    "trabajaría", "trabajarías", "trabajaríamos", "trabajarían",
+    "trabajando", "trabajado", "he trabajado", "hemos trabajado", "han trabajado"
+  ],
+  vender: [
+    "vender", "vendo", "vendés", "vendes", "vende", "vendemos", "venden",
+    "vendí", "vendiste", "vendió", "vendimos", "vendieron",
+    "vendía", "vendías", "vendíamos", "vendían",
+    "venderé", "venderás", "venderá", "venderemos", "venderán",
+    "vendería", "venderías", "venderíamos", "venderían",
+    "vendiendo", "vendido", "he vendido", "hemos vendido", "han vendido"
+  ],
+  vestir: [
+    "vestir", "visto", "vestís", "vestis", "viste", "vestimos", "visten",
+    "vestí", "vestiste", "vistió", "vestimos", "vistieron",
+    "vestía", "vestías", "vestíamos", "vestían",
+    "vestiré", "vestirás", "vestirá", "vestiremos", "vestirán",
+    "vestiría", "vestirías", "vestiríamos", "vestirían",
+    "vistiendo", "vestido", "he vestido", "hemos vestido", "han vestido"
+  ],
+  administrar: [
+    "administrar", "administro", "administrás", "administras", "administra", "administramos", "administran",
+    "administré", "administraste", "administró", "administramos", "administraron",
+    "administraba", "administrabas", "administrábamos", "administraban",
+    "administraré", "administrarás", "administrará", "administraremos", "administrarán",
+    "administraría", "administrarías", "administraríamos", "administrarían",
+    "administrando", "administrado", "he administrado", "hemos administrado", "han administrado"
+  ]
 };
 
 // ==========================================================
@@ -671,6 +799,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
