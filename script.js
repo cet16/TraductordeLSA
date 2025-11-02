@@ -397,6 +397,14 @@ const conjugaciones = {
     "admiraré", "admirarás", "admirará", "admiraremos", "admirarán",
     "admiraría", "admirarías", "admiraríamos", "admirarían",
     "admirando", "admirado", "he admirado", "hemos admirado", "han admirado"
+  ],
+  sentir: [
+    "sentir", "siento", "sentís", "sentis", "siente", "sentimos", "sienten",
+    "sentí", "sentiste", "sintió", "sentimos", "sintieron",
+    "sentía", "sentías", "sentíamos", "sentían",
+    "sentiré", "sentirás", "sentirá", "sentiremos", "sentirán",
+    "sentiría", "sentirías", "sentiríamos", "sentirían",
+    "sintiendo", "sentido", "he sentido", "hemos sentido", "han sentido"
   ]
 };
 
@@ -582,7 +590,7 @@ const palabrasFijas = {
   "santa fe": "Santa Fe",
   "santiago del estero": "Santiago Del Estero",
   "semana": "Semana",
-  "sentimiento": "Sentir O Sentimiento",
+  "sentimiento": "Sentir",
   "separado": "Separadoseparada",
   "separada": "Separadoseparada",
   "señora": "Señora",
@@ -807,6 +815,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
