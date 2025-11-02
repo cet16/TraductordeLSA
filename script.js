@@ -389,6 +389,14 @@ const conjugaciones = {
     "administraré", "administrarás", "administrará", "administraremos", "administrarán",
     "administraría", "administrarías", "administraríamos", "administrarían",
     "administrando", "administrado", "he administrado", "hemos administrado", "han administrado"
+  ],
+  admirar: [
+    "admirar", "admiro", "admirás", "admiras", "admira", "admiramos", "admiran",
+    "admiré", "admiraste", "admiró", "admiramos", "admiraron",
+    "admiraba", "admirabas", "admirábamos", "admiraban",
+    "admiraré", "admirarás", "admirará", "admiraremos", "admirarán",
+    "admiraría", "admirarías", "admiraríamos", "admirarían",
+    "admirando", "admirado", "he admirado", "hemos admirado", "han admirado"
   ]
 };
 
@@ -459,7 +467,7 @@ const palabrasFijas = {
 
   "abuelo": "Abueloabuela",
   "abuela": "Abueloabuela",
-  "admiracion": "Admiraradmiracion",
+  "admiracion": "Admirar",
   "ahorro": "Ahorro",
   "america": "America",
   "antartida": "Antartida",
@@ -476,7 +484,7 @@ const palabrasFijas = {
   "chaco": "Chaco",
   "chubut": "Chubut",
   "computadora": "Computadora",
-  "confianza": "Confiarconfianza",
+  "confianza": "Confiar",
   "corrientes": "Corrientes",
   "cordoba": "Cordoba",
   "desconfianza": "Desconfianza",
@@ -799,6 +807,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
