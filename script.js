@@ -163,7 +163,105 @@ const conjugaciones = {
         "llegaré", "llegarás", "llegará", "llegaremos", "llegarán",
         "llegaría", "llegarías", "llegaríamos", "llegarían",
         "llegando", "llegado", "he llegado", "hemos llegado", "han llegado"
-    ]
+    ],
+   ahorrar: [
+    "ahorrar", "ahorro", "ahorrás", "ahorras", "ahorra", "ahorramos", "ahorran",
+    "ahorré", "ahorraste", "ahorró", "ahorramos", "ahorraron",
+    "ahorraba", "ahorrabas", "ahorrábamos", "ahorraban",
+    "ahorraré", "ahorrarás", "ahorrará", "ahorraremos", "ahorrarán",
+    "ahorraría", "ahorrarías", "ahorraríamos", "ahorrarían",
+    "ahorrando", "ahorrado", "he ahorrado", "hemos ahorrado", "han ahorrado"
+  ],
+  amar: [
+    "amar", "amo", "amás", "amas", "ama", "amamos", "aman",
+    "amé", "amaste", "amó", "amamos", "amaron",
+    "amaba", "amabas", "amábamos", "amaban",
+    "amaré", "amarás", "amará", "amaremos", "amarán",
+    "amaría", "amarías", "amaríamos", "amarían",
+    "amando", "amado", "he amado", "hemos amado", "han amado"
+  ],
+  bailar: [
+    "bailar", "bailo", "bailás", "bailas", "baila", "bailamos", "bailan",
+    "bailé", "bailaste", "bailó", "bailamos", "bailaron",
+    "bailaba", "bailabas", "bailábamos", "bailaban",
+    "bailaré", "bailarás", "bailará", "bailaremos", "bailarán",
+    "bailaría", "bailarías", "bailaríamos", "bailarían",
+    "bailando", "bailado", "he bailado", "hemos bailado", "han bailado"
+  ],
+  cantar: [
+    "cantar", "canto", "cantás", "cantas", "canta", "cantamos", "cantan",
+    "canté", "cantaste", "cantó", "cantamos", "cantaron",
+    "cantaba", "cantabas", "cantábamos", "cantaban",
+    "cantaré", "cantarás", "cantará", "cantaremos", "cantarán",
+    "cantaría", "cantarías", "cantaríamos", "cantarían",
+    "cantando", "cantado", "he cantado", "hemos cantado", "han cantado"
+  ],
+  comprar: [
+    "comprar", "compro", "comprás", "compras", "compra", "compramos", "compran",
+    "compré", "compraste", "compró", "compramos", "compraron",
+    "compraba", "comprabas", "comprábamos", "compraban",
+    "compraré", "comprarás", "comprará", "compraremos", "comprarán",
+    "compraría", "comprarías", "compraríamos", "comprarían",
+    "comprando", "comprado", "he comprado", "hemos comprado", "han comprado"
+  ],
+  confiar: [
+    "confiar", "confío", "confiás", "confias", "confía", "confiamos", "confían",
+    "confié", "confiaste", "confió", "confiamos", "confiaron",
+    "confiaba", "confiabas", "confiábamos", "confiaban",
+    "confiaré", "confiarás", "confiará", "confiaremos", "confiarán",
+    "confiaría", "confiarías", "confiaríamos", "confiarían",
+    "confiando", "confiado", "he confiado", "hemos confiado", "han confiado"
+
+],
+  deber: [
+    "deber", "debo", "debés", "debes", "debe", "debemos", "deben",
+    "debí", "debiste", "debió", "debimos", "debieron",
+    "debía", "debías", "debíamos", "debían",
+    "deberé", "deberás", "deberá", "deberemos", "deberán",
+    "debería", "deberías", "deberíamos", "deberían",
+    "debiendo", "debido", "he debido", "hemos debido", "han debido"
+  ],
+  desconfiar: [
+    "desconfiar", "desconfío", "desconfiás", "desconfias", "desconfía", "desconfiamos", "desconfían",
+    "desconfié", "desconfiaste", "desconfió", "desconfiamos", "desconfiaron",
+    "desconfiaba", "desconfiabas", "desconfiábamos", "desconfiaban",
+    "desconfiaré", "desconfiarás", "desconfiará", "desconfiaremos", "desconfiarán",
+    "desconfiaría", "desconfiarías", "desconfiaríamos", "desconfiarían",
+    "desconfiando", "desconfiado", "he desconfiado", "hemos desconfiado", "han desconfiado"
+  ],
+  desear: [
+    "desear", "deseo", "deseás", "deseas", "desea", "deseamos", "desean",
+    "deseé", "deseaste", "deseó", "deseamos", "desearon",
+    "deseaba", "deseabas", "deseábamos", "deseaban",
+    "desearé", "desearás", "deseará", "desearemos", "desearán",
+    "desearía", "desearías", "desearíamos", "desearían",
+    "deseando", "deseado", "he deseado", "hemos deseado", "han deseado"
+  ],
+  dibujar: [
+    "dibujar", "dibujo", "dibujás", "dibujas", "dibuja", "dibujamos", "dibujan",
+    "dibujé", "dibujaste", "dibujó", "dibujamos", "dibujaron",
+    "dibujaba", "dibujabas", "dibujábamos", "dibujaban",
+    "dibujaré", "dibujarás", "dibujará", "dibujaremos", "dibujarán",
+    "dibujaría", "dibujarías", "dibujaríamos", "dibujarían",
+    "dibujando", "dibujado", "he dibujado", "hemos dibujado", "han dibujado"
+  ],
+  echar: [
+    "echar", "echo", "echás", "echas", "echa", "echamos", "echan",
+    "eché", "echaste", "echó", "echamos", "echaron",
+    "echaba", "echabas", "echábamos", "echaban",
+    "echaré", "echarás", "echará", "echaremos", "echarán",
+    "echaría", "echarías", "echaríamos", "echarían",
+    "echando", "echado", "he echado", "hemos echado", "han echado"
+  ],
+  estafar: [
+    "estafar", "estafo", "estafás", "estafas", "estafa", "estafamos", "estafan",
+    "estafé", "estafaste", "estafó", "estafamos", "estafaron",
+    "estafaba", "estafabas", "estafábamos", "estafaban",
+    "estafaré", "estafarás", "estafará", "estafaremos", "estafarán",
+    "estafaría", "estafarías", "estafaríamos", "estafarían",
+    "estafando", "estafado", "he estafado", "hemos estafado", "han estafado"
+  
+
 };
 
 // ==========================================================
@@ -573,6 +671,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
