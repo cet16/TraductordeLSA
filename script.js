@@ -697,7 +697,7 @@ function procesarTextoSecuencial(text) {
             continue;
         }
         if (dosPalabras === "entre rios") {
-            videosAReproducir.push("Palabras/Entreríos.mp4");
+            videosAReproducir.push("Palabras/Entrerios.mp4");
             i += 1;
             continue;
         }
@@ -748,53 +748,33 @@ function procesarTextoSecuencial(text) {
         }
         
 
-        // === Palabras individuales ===
-        // Letras
-        const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
-        if (letras.includes(palabra)) {
-            videosAReproducir.push(`Palabras/letra${palabra.toUpperCase()}.mp4`);
-            continue;
-        }
+// Letras
+const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
+if (letras.includes(palabra)) {
+    videosAReproducir.push(`Palabras/letra${palabra.toUpperCase()}.mp4`);
+    continue;
+}
 
-        // Verbos
-        for (let verbo in conjugaciones) {
-            if (conjugaciones[verbo].includes(palabra)) {
-                const nombreArchivo = (verbo === "contar" || verbo === "narrar")
-                    ? "Contar o Narrar"
-                    : verbo.charAt(0).toUpperCase() + verbo.slice(1);
-                videosAReproducir.push(`Palabras/${nombreArchivo}.mp4`);
-                break;
-            }
-        }
-
-        // Palabras fijas
-        for (let fija in palabrasFijas) {
-            if (palabra === fija) {
-                videosAReproducir.push(`Palabras/${palabrasFijas[fija]}.mp4`);
-                break;
-            }
-        }
-
-        // Palabras sueltas exactas
-        const archivosUnaPalabra = [
-            "ayer","hoy","mañana","manana","futuro","pasado","ultimo","último",
-            "minuto","hora","mes","semana","domingo","lunes","martes",
-            "miercoles","miércoles","jueves","viernes","sabado","sábado",
-            "mediodia","mediodía","todavia","todavía","siempre","rapido","rápido",
-            "despacio","temprano","tarde","cerca","derecha","izquierda",
-            "importante","limpio"
-        ];
-        if (archivosUnaPalabra.includes(palabra)) {
-            const normalizaciones = {
-                "manana":"mañana","miércoles":"miercoles","sabado":"sabado","sábado":"sabado",
-                "mediodía":"mediodia","todavía":"todavia","rápido":"rapido","último":"ultimo"
-            };
-            const nombre = normalizaciones[palabra] || palabra;
-            videosAReproducir.push(`Palabras/${nombre}.mp4`);
-        }
+// Verbos
+for (let verbo in conjugaciones) {
+    if (conjugaciones[verbo].includes(palabra)) {
+        const nombreArchivo = (verbo === "contar" || verbo === "narrar")
+            ? "Contar o Narrar"
+            : verbo.charAt(0).toUpperCase() + verbo.slice(1);
+        videosAReproducir.push(`Palabras/${nombreArchivo}.mp4`);
+        break;
     }
+}
 
-    reproducirSecuencialmente(videosAReproducir);
+// Palabras fijas
+for (let fija in palabrasFijas) {
+    if (palabra === fija) {
+        videosAReproducir.push(`Palabras/${palabrasFijas[fija]}.mp4`);
+        break;
+    }
+}
+
+reproducirSecuencialmente(videosAReproducir);
 }
 
 // ==========================================================
@@ -870,6 +850,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
