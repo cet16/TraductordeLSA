@@ -636,7 +636,7 @@ function procesarTextoSecuencial(text) {
         // === Frases ===
         if (tresPalabras === "vos cómo te llamas" || tresPalabras === "cómo te llamas") {
             videosAReproducir.push("Palabras/comotellamas.mp4");
-            i += 2; // saltar las siguientes palabras
+            i += 2;
             continue;
         }
         if (dosPalabras === "como estas" || dosPalabras === "cómo estás") {
@@ -690,7 +690,7 @@ function procesarTextoSecuencial(text) {
             continue;
         }
 
-                // === Provincias argentinas con más de una palabra ===
+        // === Provincias argentinas ===
         if (dosPalabras === "buenos aires") {
             videosAReproducir.push("Palabras/Buenosaires.mp4");
             i += 1;
@@ -746,37 +746,37 @@ function procesarTextoSecuencial(text) {
             i += 2;
             continue;
         }
-        
 
-// Letras
-const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
-if (letras.includes(palabra)) {
-    videosAReproducir.push(`Palabras/letra${palabra.toUpperCase()}.mp4`);
-    continue;
-}
+        // === Letras ===
+        const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
+        if (letras.includes(palabra)) {
+            videosAReproducir.push(`Palabras/letra${palabra.toUpperCase()}.mp4`);
+            continue;
+        }
 
-// Verbos
-for (let verbo in conjugaciones) {
-    if (conjugaciones[verbo].includes(palabra)) {
-        const nombreArchivo = (verbo === "contar" || verbo === "narrar")
-            ? "Contar o Narrar"
-            : verbo.charAt(0).toUpperCase() + verbo.slice(1);
-        videosAReproducir.push(`Palabras/${nombreArchivo}.mp4`);
-        break;
+        // === Verbos ===
+        for (let verbo in conjugaciones) {
+            if (conjugaciones[verbo].includes(palabra)) {
+                const nombreArchivo = (verbo === "contar" || verbo === "narrar")
+                    ? "Contar o Narrar"
+                    : verbo.charAt(0).toUpperCase() + verbo.slice(1);
+                videosAReproducir.push(`Palabras/${nombreArchivo}.mp4`);
+                break;
+            }
+        }
+
+        // === Palabras fijas ===
+        for (let fija in palabrasFijas) {
+            if (palabra === fija) {
+                videosAReproducir.push(`Palabras/${palabrasFijas[fija]}.mp4`);
+                break;
+            }
+        }
     }
-}
 
-// Palabras fijas
-for (let fija in palabrasFijas) {
-    if (palabra === fija) {
-        videosAReproducir.push(`Palabras/${palabrasFijas[fija]}.mp4`);
-        break;
-    }
+    // ✅ Ahora sí, se reproduce toda la lista completa
+    reproducirSecuencialmente(videosAReproducir);
 }
-
-reproducirSecuencialmente(videosAReproducir);
-}
-
 // ==========================================================
 // ==============  Reproducción secuencial  =================
 // ==========================================================
@@ -850,6 +850,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
