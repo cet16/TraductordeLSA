@@ -585,7 +585,7 @@ const palabrasFijas = {
   "san luis": "San Luis",
   "santa cruz": "Santa Cruz",
   "santa fe": "Santa Fe",
-  "santiagodelestero": "santiagodelestero",
+  "santiago del estero": "santiagodelestero",
   "semana": "Semana",
   "sentimiento": "Sentir",
   "separado": "Separadoseparada",
@@ -870,6 +870,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
