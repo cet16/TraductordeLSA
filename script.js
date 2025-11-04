@@ -690,6 +690,64 @@ function procesarTextoSecuencial(text) {
             continue;
         }
 
+                // === Provincias argentinas con más de una palabra ===
+        if (dosPalabras === "buenos aires") {
+            videosAReproducir.push("Palabras/Buenosaires.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "entre rios") {
+            videosAReproducir.push("Palabras/Entreríos.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "la pampa") {
+            videosAReproducir.push("Palabras/Lapampa.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "la rioja") {
+            videosAReproducir.push("Palabras/Larioja.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "rio negro") {
+            videosAReproducir.push("Palabras/Rionegro.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "san juan") {
+            videosAReproducir.push("Palabras/SanJuan.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "san luis") {
+            videosAReproducir.push("Palabras/SanLuis.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "santa cruz") {
+            videosAReproducir.push("Palabras/SantaCruz.mp4");
+            i += 1;
+            continue;
+        }
+        if (dosPalabras === "santa fe") {
+            videosAReproducir.push("Palabras/SantaFe.mp4");
+            i += 1;
+            continue;
+        }
+        if (tresPalabras === "santiago del estero") {
+            videosAReproducir.push("Palabras/SantiagoDelEstero.mp4");
+            i += 2;
+            continue;
+        }
+        if (tresPalabras === "tierra del fuego") {
+            videosAReproducir.push("Palabras/Tierradelfuego.mp4");
+            i += 2;
+            continue;
+        }
+        
+
         // === Palabras individuales ===
         // Letras
         const letras = ["a","b","c","d","e","f","g","h","i","j","k","l","ll","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","ch"];
@@ -812,6 +870,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
