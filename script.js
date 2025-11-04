@@ -774,7 +774,6 @@ function procesarTextoSecuencial(text) {
         }
     }
 
-    // ✅ Ahora sí, se reproduce toda la lista completa
     reproducirSecuencialmente(videosAReproducir);
 }
 // ==========================================================
@@ -850,6 +849,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
