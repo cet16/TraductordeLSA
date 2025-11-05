@@ -402,7 +402,39 @@ sentir: [
   "sentire", "sentiras", "sentira", "sentiremos", "sentiran",
   "sentiria", "sentirias", "sentiriamos", "sentirian",
   "sintiendo", "sentido", "he sentido", "hemos sentido", "han sentido"
-]
+],
+  venir: [
+    "venir", "vengo", "vienes", "viene", "venimos", "vienen",
+    "vine", "viniste", "vino", "vinimos", "vinieron",
+    "venia", "venias", "veniamos", "venian",
+    "vendre", "vendras", "vendra", "vendremos", "vendran",
+    "vendria", "vendrias", "vendriamos", "vendrian",
+    "viniendo", "venido", "he venido", "hemos venido", "han venido"
+  ],
+  ir: [
+    "ir", "voy", "vas", "va", "vamos", "van",
+    "fui", "fuiste", "fue", "fuimos", "fueron",
+    "iba", "ibas", "ibamos", "iban",
+    "ire", "iras", "ira", "iremos", "iran",
+    "iria", "irias", "iriamos", "irian",
+    "yendo", "ido", "he ido", "hemos ido", "han ido"
+  ],
+  echar: [
+    "echar", "echo", "echas", "echa", "echamos", "echan",
+    "eche", "echaste", "echaron",
+    "echaba", "echabas", "echabamos", "echaban",
+    "echare", "echaras", "echara", "echaremos", "echaran",
+    "echaria", "echarias", "echariamos", "echarian",
+    "echando", "echado", "he echado", "hemos echado", "han echado"
+  ],
+  despedir: [
+    "despedir", "despido", "despedis", "despedis", "despide", "despedimos", "despiden",
+    "despedi", "despediste", "despidio", "despedimos", "despidieron",
+    "despedia", "despedias", "despediamos", "despedian",
+    "despedire", "despediras", "despedira", "despediremos", "despediran",
+    "despediria", "despedirias", "despediriamos", "despedirian",
+    "despidiendo", "despedido", "he despedido", "hemos despedido", "han despedido"
+  ]
 };
 
 // ==========================================================
@@ -423,8 +455,6 @@ const palabrasFijas = {
     ustedes: "Ustedes",
     "el": "El o Ella",
     "ella": "El o Ella",
-    "nosotros": "Nosotros o Nosotras",
-    "nosotras": "Nosotros o Nosotras",
 
     // ===== Nuevas palabras/expresiones (según tu carpeta) =====
     // Tiempo / frecuencia
@@ -612,10 +642,45 @@ const palabrasFijas = {
   "zapato": "Zapato",
   "zapatilla": "Zapatilla"
 
+    // Sentimientos y adjetivos
+  "amargo": "Amargo",
+  "importante": "Importante",
+  "especial": "Especial",
+  "interesante": "Interesante",
+  "interes": "Interesante",
+  "importancia": "Importancia",
+  "malos": "Malosmia", // si el archivo representa “malo/malos”
+  "malas": "Malosmia",
+  "mal": "Malosmia",
+
+
+  "venir": "Venir",
+  "ir": "Ir",
+  "echar": "Echar",
+  "despedir": "Despedir",
+  "buenas": "Buenobuena",
+  "bueno": "Buenobuena",
+  "buena": "Buenobuena",
+
+
+  "ellos": "Ellosellas",
+  "ellas": "Ellosellas",
+  "nosotros": "Nosotrosnosotras",
+  "nosotras": "Nosotrosnosotras",
+
+
+  "1": "Uno", "uno": "Uno",
+  "2": "Dos", "dos": "Dos",
+  "3": "Tres", "tres": "Tres", 
+  "4": "Cuatro", "cuatro": "Cuatro",
+  "5": "Cinco", "cinco": "Cinco",
+  "6": "Seis", "seis": "Seis",
+  "7": "Siete", "siete": "Siete",
+  "8": "Ocho", "ocho": "Ocho",
+  "9": "Nueve", "nueve": "Nueve",
+  "10": "Diez", "diez": "Diez"
   
-    // ¡Ojo! Las frases multi-palabra se manejan abajo con includes(),
-    // pero igual ponemos aquí las formas de UNA palabra para que
-    // funcionen si vienen sueltas.
+
 };
 
 // ==========================================================
@@ -849,6 +914,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
