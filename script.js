@@ -457,7 +457,7 @@ const palabrasFijas = {
     "mañana": "Mañana",
     "año": "Año",
     "año pasado": "Año pasado",
-    "Futuro": "futuro",
+    "futuro": "Futuro",
     "pasado": "Pasado",
     "ultimo": "Ultimo",
     "Minuto": "minuto",
@@ -836,7 +836,7 @@ function procesarTextoSecuencial(text) {
 // ==============  Reproducción secuencial  =================
 // ==========================================================
 
-// ====== Velocidad global (fix) ======
+// ====== Velocidad global ======
 let currentSpeed = (() => {
   const sc = document.getElementById("speedControl");
   const val = sc ? parseFloat(sc.value) : NaN;
@@ -852,10 +852,10 @@ function reproducirSecuencialmente(lista) {
     const path = lista.shift();
     videoSource.src = path;
     videoSeña.load();
-    videoSeña.muted = true; // 🔇 Mutea el video automáticamente
+    videoSeña.muted = true; // 🔇
     videoSeña.style.display = "block";
 
-    // ✅ Usar la velocidad actual elegida por el usuario (no pisar con 0.75)
+    // ✅ 
     videoSeña.playbackRate = currentSpeed;
 
     videoSeña.onended = () => {
@@ -905,6 +905,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
