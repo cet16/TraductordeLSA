@@ -635,7 +635,8 @@ const palabrasFijas = {
   "viuda": "Viudoviuda",
   "zapato": "Zapato",
   "zapatilla": "Zapatilla",
-
+  "jesus": "Jesus",
+  "jesucristo": "Jesus",
 
   "amargo": "Amargo",
   "importante": "Importante",
@@ -904,6 +905,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
