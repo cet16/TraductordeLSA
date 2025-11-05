@@ -681,7 +681,7 @@ function procesarTextoSecuencial(text) {
     const palabras = text.split(" ");
     const videosAReproducir = [];
 
-    // Analiza de izquierda a derecha respetando el orden del texto
+
     for (let i = 0; i < palabras.length; i++) {
         let palabra = palabras[i].trim();
 
@@ -836,7 +836,7 @@ function procesarTextoSecuencial(text) {
 // ==============  Reproducción secuencial  =================
 // ==========================================================
 
-// ====== Velocidad global ======
+// Velocidad global
 let currentSpeed = (() => {
   const sc = document.getElementById("speedControl");
   const val = sc ? parseFloat(sc.value) : NaN;
@@ -861,7 +861,7 @@ function reproducirSecuencialmente(lista) {
     videoSeña.onended = () => {
         setTimeout(() => {
             reproducirSecuencialmente(lista);
-        }, 100); // delay de 100ms
+        }, 100); 
     };
     videoSeña.play();
 }
@@ -870,22 +870,20 @@ function reproducirSecuencialmente(lista) {
 // =====================  Extras UI  ========================
 // ==========================================================
 
-// 🎚 Control de velocidad
 const speedControl = document.getElementById("speedControl");
 const speedValue = document.getElementById("speedValue");
 
-// Sincronizar la etiqueta al cargar
 if (speedValue && speedControl) {
   speedValue.textContent = parseFloat(speedControl.value) + "x";
 }
 
 speedControl.addEventListener("input", () => {
-  currentSpeed = parseFloat(speedControl.value);   // actualizar velocidad global
-  videoSeña.playbackRate = currentSpeed;           // aplicar de inmediato si está reproduciendo
+  currentSpeed = parseFloat(speedControl.value);   
+  videoSeña.playbackRate = currentSpeed;           
   speedValue.textContent = currentSpeed + "x";
 });
 
-// 🎤 Indicador de micrófono
+// 🎤
 function activarMicrofono() {
   boton.classList.add("mic-active");
 }
@@ -893,18 +891,19 @@ function desactivarMicrofono() {
   boton.classList.remove("mic-active");
 }
 
-// ✨ Glow en el texto cuando hay input
+// ✨
 function mostrarTextoReconocido(textoReconocido) {
   texto.textContent = textoReconocido;
   texto.classList.add("glow");
   setTimeout(() => texto.classList.remove("glow"), 1000);
 }
 
-// ♿ Toggle de alto contraste
+// ♿ 
 const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
