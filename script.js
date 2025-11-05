@@ -2,76 +2,73 @@
 // ============== Traductor Voz/Text → Señas ==============
 // ==========================================================
 
-// 🔤 Normalización que elimina tildes pero preserva la ñ
+// 🔤 Normalización
 function normalizar(texto) {
   if (!texto) return '';
   let t = String(texto).trim();
 
-  // proteger ñ y Ñ con marcador único
+  // proteger ñ
   t = t.replace(/ñ/g, '__ENHE__').replace(/Ñ/g, '__ENHE__');
 
-  // eliminar tildes
   t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-  // restaurar ñ antes de pasar a minúsculas
   t = t.replace(/__ENHE__/g, 'ñ');
 
-  // pasar a minúsculas y limpiar signos
   t = t.toLowerCase();
   t = t.replace(/[¿?¡!,.]/g, '');
   t = t.replace(/\s+/g, ' ');
   return t;
 }
 
-// 🎯 Captura de elementos del DOM
+// 🎯 
 const boton = document.getElementById('start');
 const texto = document.getElementById('texto');
 const videoSeña = document.getElementById('videoSeña');
 const videoSource = document.getElementById('videoSource');
 const entradaTexto = document.getElementById('entradaTexto');
-const startText = document.getElementById('startText'); // Texto del botón
-const reproducirBtn = document.getElementById('reproducirBtn'); // 🔹 Botón Reproducir
+const startText = document.getElementById('startText'); 
+const reproducirBtn = document.getElementById('reproducirBtn'); 
 
-// 🎛️ Control de tamaño del video
+// 🎛️ 
 const sizeControl = document.getElementById('sizeControl');
 const sizeValue = document.getElementById('sizeValue');
 
 sizeControl.addEventListener('input', () => {
   const newSize = sizeControl.value;
   sizeValue.textContent = `${newSize}px`;
-  videoSeña.style.display = "block"; // 🔹 Asegura que esté visible
+  videoSeña.style.display = "block"; 
   videoSeña.style.maxWidth = `${newSize}px`;
-  videoSeña.style.maxHeight = `${Math.round(newSize * 0.75)}px`; // mantiene proporción
+  videoSeña.style.maxHeight = `${Math.round(newSize * 0.75)}px`;
 });
 
-// 🎬 Ocultar el video al cargar la página
+// 🎬 
 videoSeña.style.display = "none";
 
-// 🗣️ Configuración del reconocimiento de voz
+// 🗣️ 
 const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-reconocimiento.lang = 'es-ES'; // Idioma español
+reconocimiento.lang = 'es-ES'; 
 
-// ▶️ Evento al hacer clic en el botón de inicio
+// ▶️ 
 boton.addEventListener('click', () => {
-  activarMicrofono(); // Enciende indicador visual
-  if (startText) startText.textContent = "Escuchando..."; // Cambia texto del botón
-  reconocimiento.start(); // Inicia el reconocimiento de voz
+  activarMicrofono(); 
+  if (startText) startText.textContent = "Escuchando..."; 
+  reconocimiento.start(); 
 });
 
-// 🎧 Evento cuando se detecta voz
+// 🎧 
 reconocimiento.onresult = (event) => {
-  const speechText = normalizar(event.results[0][0].transcript); // Normaliza el texto
-  mostrarTextoReconocido(speechText); // Muestra el texto en pantalla
-  procesarTextoSecuencial(speechText); // Procesa el texto para mostrar señas
+  const speechText = normalizar(event.results[0][0].transcript); 
+  mostrarTextoReconocido(speechText); 
+  procesarTextoSecuencial(speechText);
 };
 
-// 🛑 Evento cuando finaliza el reconocimiento
+// 🛑 
 reconocimiento.onend = () => {
-  desactivarMicrofono(); // Apaga indicador visual
-  if (startText) startText.textContent = "Hablar"; // Restaura texto del botón
+  desactivarMicrofono(); 
+  if (startText) startText.textContent = "Hablar"; 
 };
 
-// ⌨️ Evento al presionar Enter en el input de texto
+// ⌨️ Enter
 entradaTexto.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -81,7 +78,7 @@ entradaTexto.addEventListener('keypress', (event) => {
   }
 });
 
-// ▶️ Evento al hacer clic en el botón "Reproducir"
+// ▶️ "Reproducir"
 reproducirBtn.addEventListener('click', () => {
   let userInput = normalizar(entradaTexto.value);
   mostrarTextoReconocido(userInput);
@@ -90,7 +87,6 @@ reproducirBtn.addEventListener('click', () => {
 
 // ==========================================================
 // ===============  Conjugaciones por verbo  =================
-// (mantenemos el mismo formato que ya usabas)
 // ==========================================================
 const conjugaciones = {
 dialogar: [
@@ -439,7 +435,6 @@ sentir: [
 
 // ==========================================================
 // ==================  Palabras fijas  =======================
-// (incluye nuevas de la carpeta; se agregan variantes sin tilde)
 // ==========================================================
 const palabrasFijas = {
     // Ya existentes
@@ -456,8 +451,7 @@ const palabrasFijas = {
     "el": "El o Ella",
     "ella": "El o Ella",
 
-    // ===== Nuevas palabras/expresiones (según tu carpeta) =====
-    // Tiempo / frecuencia
+
     "ayer": "Ayer",
     "hoy": "Hoy",
     "mañana": "Mañana",
@@ -488,14 +482,14 @@ const palabrasFijas = {
     "internacional": "Internacional",
     "administracion": "administracion",
 
-    // Lugar / direcciones / cualidades
+
     "cerca": "Cerca",
     "derecha": "Derecha",
     "izquierda": "Izquierda",
     "importante": "Importante",
     "limpio": "Limpio",
 
-    // Días y frases sociales
+
     "hola": "hola",
     "no": "No",
     "si": "Si", "sí": "Si",
@@ -642,22 +636,18 @@ const palabrasFijas = {
   "zapato": "Zapato",
   "zapatilla": "Zapatilla",
 
-    // Sentimientos y adjetivos
+
   "amargo": "Amargo",
   "importante": "Importante",
   "especial": "Especial",
   "interesante": "Interesante",
   "interes": "Interesante",
   "importancia": "Importancia",
-  "malos": "Malosmia", // si el archivo representa “malo/malos”
+  "malos": "Malosmia", 
   "malas": "Malosmia",
   "mal": "Malosmia",
 
 
-  "venir": "Venir",
-  "ir": "Ir",
-  "echar": "Echar",
-  "despedir": "Despedir",
   "buenas": "Buenobuena",
   "bueno": "Buenobuena",
   "buena": "Buenobuena",
@@ -684,7 +674,7 @@ const palabrasFijas = {
 };
 
 // ==========================================================
-// =========  Procesamiento secuencial (con frases) =========
+// =========  Procesamiento secuencial =========
 // ==========================================================
 function procesarTextoSecuencial(text) {
     const palabras = text.split(" ");
@@ -914,6 +904,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
