@@ -640,7 +640,7 @@ const palabrasFijas = {
   "viudo": "Viudoviuda",
   "viuda": "Viudoviuda",
   "zapato": "Zapato",
-  "zapatilla": "Zapatilla"
+  "zapatilla": "Zapatilla",
 
     // Sentimientos y adjetivos
   "amargo": "Amargo",
@@ -914,6 +914,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
