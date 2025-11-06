@@ -669,7 +669,31 @@ const palabrasFijas = {
   "7": "Siete", "siete": "Siete",
   "8": "Ocho", "ocho": "Ocho",
   "9": "Nueve", "nueve": "Nueve",
-  "10": "Diez", "diez": "Diez"
+  "10": "Diez", "diez": "Diez",
+
+  "color": "Color",
+  "claro": "Claro",
+  "oscuro": "Oscuro",
+  "brillante": "Brillante",
+  "azul": "Azul",
+  "rojo": "Rojo",
+  "amarillo": "Amarillo",
+  "naranja": "Naranja",
+  "blanco": "Blancooblanca",
+  "blanca": "Blancooblanca",
+  "celeste": "Celeste",
+  "dorado": "Dorado",
+  "gris": "Gris",
+  "marron": "Marron",
+  "negro": "Negro",
+  "rosa": "Rosaorosado",
+  "rosado": "Rosaorosado",
+  "verde": "Verde",
+  "violeta": "Violeta",
+
+  // 🎵 Instrumentos
+  "guitarra": "Guitarra",
+  "piano": "Piano"
   
 
 };
@@ -903,6 +927,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
