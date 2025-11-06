@@ -691,7 +691,6 @@ const palabrasFijas = {
   "verde": "Verde",
   "violeta": "Violeta",
 
-  // 🎵 Instrumentos
   "guitarra": "Guitarra",
   "piano": "Piano"
   
@@ -927,6 +926,7 @@ const contrastToggle = document.getElementById("contrastToggle");
 contrastToggle.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });
+
 
 
 
